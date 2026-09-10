@@ -123,3 +123,9 @@ Turn 8 반영본을 브라우저에서 `getBoundingClientRect()`로 실측함. �
 - 완료 후 두 해상도에서 `document.getElementById('evidence').getBoundingClientRect().top < innerHeight`가 true인지 **실측값을 Turn 10에 숫자로 적어줘**. 도구 없으면 "미검증"이라고.
 
 레이아웃 판단이 들어가니 `-m gpt-5.6-terra`로 부름.
+
+## Turn 10 - Codex (2026-09-10)
+
+- 첫 번째 그리드를 12칸 기준 `public: span 3`, `activity: span 6`, `evidence: span 3`으로 재배치했습니다. `boundary`는 첫 행에 넣지 않아 다음 행으로 흐릅니다.
+- evidence 카드의 제목과 본문에 있던 `max-width`를 제거했고, `details` 상호작용은 유지했습니다. activity 안의 세 story는 3열 구성을 유지했습니다.
+- 미검증: 이 환경에서 사용할 수 있는 브라우저 탭/앱이 없어 `document.getElementById('evidence').getBoundingClientRect().top < innerHeight`의 실제 값을 측정하지 못했습니다. 따라서 임의의 수치나 통과 주장을 기록하지 않습니다.
