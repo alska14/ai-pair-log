@@ -23,6 +23,9 @@
       .evidence h2 { color:#fff; max-width:20ch; } .evidence .tag { background:#bcebe1; color:#073d39; } .evidence > p { max-width:60ch; color:#dce9e7; } details { margin-top:1.45rem; padding:.85rem 1rem; border:1px solid #71918e; border-radius:.65rem; background:rgba(255,255,255,.08); } summary { cursor:pointer; color:#fff; font-weight:800; } details p { margin-top:.65rem; color:#dce9e7; font-size:.94rem; }
       .boundary { background:var(--amber-pale); border-color:#e6ba8c; } .boundary .tag { background:#fff8ef; color:#803500; } .boundary-list li { border-color:#edd2b3; font-size:.95rem; } .boundary-list li::before { margin-right:.55rem; color:var(--amber); font-weight:900; content:"—"; } .note { max-width:70ch; margin:1.25rem 0 0; color:var(--muted); font-size:.86rem; } footer { border-top:1px solid var(--line); color:var(--muted); font-size:.85rem; } footer .shell { padding:1.25rem 0 1.7rem; }
       @media (max-width:900px) { .public,.activity,.evidence,.boundary { grid-column:span 6; } .activity-list { grid-template-columns:1fr; } } @media (max-width:620px) { .shell { width:min(100% - 2rem,1200px); } .topbar { align-items:flex-start; flex-direction:column; padding:1rem 0; } nav ul { justify-content:flex-start; gap:.8rem 1.1rem; } main { padding-top:3.5rem; } .hero { grid-template-columns:1fr; gap:1.5rem; } .hero-mark { max-width:32rem; } .public,.activity,.evidence,.boundary { grid-column:1 / -1; } .card { border-radius:.8rem; } } @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+      /* Turn 6: compact the hero so the activity heading enters the first viewport. */
+      main { padding:clamp(2rem,4vw,4rem) 0 4rem; }
+      h1 { font-size:clamp(2.2rem,4vw,4rem); }
     </style>
   </head>
   <body>
