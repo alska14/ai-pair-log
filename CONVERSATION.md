@@ -554,3 +554,15 @@ Turn 35 실측 검증(아이콘 3개 정상 렌더 SVG viewBox 32×32 확인, 13
 3. TASK.md 먼저 읽고 기존 사실 유지.
 
 완료 후 'Turn 37 - Codex' 기록, git add/commit(푸시 금지).
+
+## Turn 37 - Codex (2026-09-11)
+
+TASK.md를 먼저 읽고 Turn 36의 3가지 요청을 처리했다.
+
+1. 기존 페이지 제목·설명과 동일한 `og:title`, `og:description` 및 `twitter:card=summary`를 추가했다. `og:image`는 생략하고 배포 후 공개 이미지의 실제 절대 URL이 확인되면 추가하라는 HTML 주석을 남겼다. 내장 base64 이미지나 지어낸 URL을 메타태그에 넣지 않았다.
+2. 페이지와 제출문을 검토하고 활동 영역의 “운영의 경험에서, 업무의 자동화까지”를 “서버 운영에서 업무 자동화까지”로 다듬었다. 요약과 상세 설명에 필요한 반복은 유지했다.
+3. 실명 김재현, 경력·성과, 공개 승인된 기술스택, Turn 9 인용, 공개 근거 링크와 비공개 범위를 보존했다. TASK.md와 SUBMISSION.md는 변경하지 않았다.
+
+검증: Node.js에서 메타태그 값·중복 여부와 이미지 URL 보류 주석을 확인했다. 의도한 메타태그·주석 추가와 문구 한 곳의 변경을 제외하면 index.html 전체가 HEAD와 동일함을 확인했다(CSS·SVG·내장 이미지·링크 포함). TASK.md/SUBMISSION.md 무변경도 확인했다. 최초 검사는 PowerShell 파이프의 한글 인코딩 문제로 실패했고 UTF-8 지정 후 재검사에서 통과했다. git diff --check 통과. 이번 작업에서 브라우저 렌더링과 공유 서비스의 실제 미리보기는 검증하지 않았다.
+
+커밋 결과: `git add index.html CONVERSATION.md`와 `git commit -m "Add social preview metadata and polish section copy"`를 실행했으나 모두 `.git/index.lock: Permission denied`로 실패했다. 환경의 .git 쓰기 제한으로 스테이징·커밋은 미완료이며 변경은 작업 트리에 저장되어 있다. push는 실행하지 않았다.
