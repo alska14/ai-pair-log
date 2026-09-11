@@ -1,46 +1,130 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="김재현의 공개 범위와 개발 방식, 경험을 소개하는 한 페이지입니다.">
-    <title>김재현 — 검증하며 만드는 개발자</title>
-    <style>
-      :root { color-scheme: light; --ink:#14212d; --muted:#475867; --paper:#f5f1e9; --surface:#fffdf9; --line:#c8d0d1; --teal:#006d65; --teal-deep:#004d48; --teal-pale:#dff2ed; --amber:#b84e08; --amber-pale:#ffedd9; --navy:#183654; }
-      * { box-sizing:border-box; } html { scroll-behavior:smooth; }
-      body { min-width:320px; margin:0; background:var(--paper); color:var(--ink); font-family:Inter, Pretendard, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size:16px; line-height:1.6; }
-      a { color:var(--teal-deep); text-decoration-thickness:.09em; text-underline-offset:.18em; } a:hover { color:#003a36; } :focus-visible { outline:3px solid #b84e08; outline-offset:4px; }
-      .skip-link { position:absolute; top:-4rem; left:1rem; z-index:10; padding:.55rem .8rem; background:var(--ink); color:#fff; } .skip-link:focus { top:1rem; }
-      .shell { width:min(1200px, calc(100% - 3rem)); margin:0 auto; }
-      header { border-bottom:1px solid var(--line); background:rgba(245,241,233,.93); } .topbar { display:flex; min-height:4.6rem; align-items:center; justify-content:space-between; gap:1.5rem; }
-      .brand { margin:0; font-size:.9rem; font-weight:800; letter-spacing:.055em; } .brand span { color:var(--teal); } nav ul { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:1.25rem; margin:0; padding:0; list-style:none; } nav a { font-size:.88rem; font-weight:750; }
-      main { padding:clamp(3rem,7vw,6.8rem) 0 4.5rem; } .eyebrow { display:flex; align-items:center; gap:.55rem; margin:0 0 .85rem; color:var(--teal-deep); font-size:.76rem; font-weight:850; letter-spacing:.13em; text-transform:uppercase; } .eyebrow::before { width:1.8rem; height:2px; background:currentColor; content:""; }
-      h1,h2,h3 { margin:0; color:var(--ink); line-height:1.12; } h1 { max-width:22ch; font-size:clamp(2.65rem,6vw,5.75rem); letter-spacing:-.065em; word-break:keep-all; overflow-wrap:normal; } h2 { font-size:clamp(1.35rem,2vw,1.85rem); letter-spacing:-.035em; } h3 { font-size:1.08rem; letter-spacing:-.025em; } p { margin:0; }
-      .hero { display:grid; grid-template-columns:minmax(0,1.65fr) minmax(16rem,.75fr); gap:clamp(2rem,6vw,6rem); align-items:end; } .lead { max-width:52ch; margin-top:1.4rem; color:var(--muted); font-size:clamp(1.05rem,1.6vw,1.25rem); line-height:1.7; } .hero-mark { padding:1.45rem 0 1.35rem 1.5rem; border-left:3px solid var(--amber); } .hero-mark strong { display:block; color:#a34506; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; } .hero-mark p { margin-top:.45rem; color:var(--muted); font-size:.95rem; }
-      .grid { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:1.1rem; margin-top:clamp(3rem,6vw,5.5rem); } .card { position:relative; overflow:hidden; padding:clamp(1.2rem,2.2vw,2.1rem); border:1px solid var(--line); border-radius:1rem; background:var(--surface); box-shadow:0 10px 26px rgba(20,33,45,.045); } .card > * + * { margin-top:1rem; } .public { grid-column:span 3; } .activity { grid-column:span 6; } .evidence { grid-column:span 3; background:var(--navy); border-color:var(--navy); color:#eff7f6; } .boundary { grid-column:span 5; }
-      .tag { display:inline-flex; align-items:center; min-height:1.75rem; padding:.2rem .58rem; border-radius:999px; background:var(--teal-pale); color:var(--teal-deep); font-size:.74rem; font-weight:850; letter-spacing:.04em; } .facts,.boundary-list { margin:1.35rem 0 0; padding:0; list-style:none; } .facts li,.boundary-list li { padding:.78rem 0; border-top:1px solid #dce2e1; } .facts strong { display:block; font-size:.95rem; } .facts span { display:block; margin-top:.1rem; color:var(--muted); font-size:.91rem; }
-      .activity::after { position:absolute; right:-2.5rem; bottom:-4.5rem; width:13rem; height:13rem; border:2rem solid var(--teal-pale); border-radius:50%; content:""; pointer-events:none; } .activity > * { position:relative; z-index:1; } .activity-list { display:grid; grid-template-columns:repeat(3,1fr); gap:.85rem; margin-top:1.45rem; counter-reset:item; } .story { min-height:100%; padding:1.15rem; border-radius:.7rem; background:#f0f5f2; } .story:nth-child(2) { background:#f8f1e7; } .story:nth-child(3) { background:#e8f2f1; } .story h3::before { display:block; margin-bottom:.8rem; color:var(--teal); font-size:.72rem; font-weight:850; letter-spacing:.11em; content:"0" counter(item); counter-increment:item; } .story p { margin-top:.65rem; color:var(--muted); font-size:.9rem; line-height:1.65; } .story b { color:var(--ink); }
-      .evidence h2 { color:#fff; } .evidence .tag { background:#bcebe1; color:#073d39; } .evidence > p { color:#dce9e7; } .evidence a { color:#bcebe1; } details { margin-top:1.45rem; padding:.85rem 1rem; border:1px solid #71918e; border-radius:.65rem; background:rgba(255,255,255,.08); } summary { cursor:pointer; color:#fff; font-weight:800; } details p { margin-top:.65rem; color:#dce9e7; font-size:.94rem; }
-      .boundary { background:var(--amber-pale); border-color:#e6ba8c; } .boundary .tag { background:#fff8ef; color:#803500; } .boundary-list li { border-color:#edd2b3; font-size:.95rem; } .boundary-list li::before { margin-right:.55rem; color:var(--amber); font-weight:900; content:"—"; } .note { max-width:70ch; margin:1.25rem 0 0; color:var(--muted); font-size:.86rem; } footer { border-top:1px solid var(--line); color:var(--muted); font-size:.85rem; } footer .shell { padding:1.25rem 0 1.7rem; }
-      @media (max-width:900px) { .public,.activity,.evidence,.boundary { grid-column:span 6; } .activity-list { grid-template-columns:1fr; } } @media (max-width:620px) { .shell { width:min(100% - 2rem,1200px); } .topbar { align-items:flex-start; flex-direction:column; padding:1rem 0; } nav ul { justify-content:flex-start; gap:.8rem 1.1rem; } main { padding-top:3.5rem; } .hero { grid-template-columns:1fr; gap:1.5rem; } .hero-mark { max-width:32rem; } .public,.activity,.evidence,.boundary { grid-column:1 / -1; } .card { border-radius:.8rem; } } @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
-      /* Turn 6: compact the hero so the activity heading enters the first viewport. */
-      main { padding:clamp(2rem,4vw,4rem) 0 4rem; }
-      h1 { font-size:clamp(2.2rem,4vw,4rem); }
-    </style>
-  </head>
-  <body>
-    <a class="skip-link" href="#content">본문으로 건너뛰기</a>
-    <header><div class="shell topbar"><p class="brand"><span>김재현</span> / product-minded builder</p><nav aria-label="페이지 탐색"><ul><li><a href="#intro">소개</a></li><li><a href="#activity">활동</a></li><li><a href="#evidence">근거</a></li><li><a href="#boundary">공개 범위</a></li></ul></nav></div></header>
-    <main id="content" class="shell">
-      <section id="intro" class="hero" aria-labelledby="page-title"><div><p class="eyebrow">About this page</p><h1 id="page-title">빠르게 만들고, 실제 결과로 검증하는 개발자</h1><p class="lead">이 페이지는 반복적인 규제 대응 업무를 제품으로 바꾸고 싶은 동료와 협업 상대에게, 김재현이 무엇을 만들고 어떤 방식으로 검증하는지 보여줍니다.</p></div><aside class="hero-mark" aria-label="개발 원칙"><strong>Build / verify / own</strong><p>AI를 활용하되, 판단과 검증의 책임은 직접 집니다.</p></aside></section>
-      <div class="grid">
-        <section class="card public" aria-labelledby="public-title"><span class="tag">공개하는 범위</span><h2 id="public-title">이 페이지에서 말하는 것</h2><ul class="facts"><li><strong>현재의 관심사</strong><span>반복적인 서류·견적 처리의 자동화</span></li><li><strong>만드는 방식</strong><span>AI를 활용하고 실제 데이터로 결과를 대조 검증</span></li><li><strong>기술의 방향</strong><span>Node.js·Python 기반 백엔드와 클라우드 운영</span></li></ul></section>
-        <section id="activity" class="card activity" aria-labelledby="activity-title"><p class="eyebrow">Three things I practice</p><h2 id="activity-title">상황에서 드러난 세 가지</h2><div class="activity-list"><article class="story"><h3>운영까지 책임지는 제작</h3><p><b>상황:</b> 약 10년 전 모바일 마인크래프트 서버가 필요했습니다. <b>행동:</b> PocketMine-MP 기반 플러그인을 직접 개발하고 서버를 운영했습니다. <b>결과:</b> 한국 내 모바일 마인크래프트 서버 중 1위 규모에 도달했습니다.</p></article><article class="story"><h3>속도와 검증을 함께 두는 개발</h3><p><b>상황:</b> 규제 대응 서류를 자동 분류하는 로직에서 서로 다른 시점의 결과가 갈렸습니다. <b>행동:</b> 표준 라이브러리 구현과 식별자 매칭 결과를 실제 데이터로 대조해 하나로 합쳤습니다. <b>결과:</b> 검증한 판정 로직을 남기고, 완료·미완료 범위를 v0.1~v0.12 문서로 구분했습니다.</p></article><article class="story"><h3>반복 업무를 제품으로 바꾸기</h3><p><b>상황:</b> CPNP·PPWR 등 화장품·포장재 규제 대응 업무에 반복적인 서류·견적 처리가 남아 있었습니다. <b>행동:</b> Node.js(Express)+PostgreSQL+Prisma 기반 제출 포털(파일 업로드, 인증, 요청 제한)과 Python 기반 문서 판정 엔진, 규칙 기반 파서+LLM 폴백 견적 시스템을 설계해 Railway에 배포했습니다. <b>결과:</b> 데이터 영속성과 접근 제어를 갖춘 시스템이 실제 운영 환경에서 이어지고 있습니다.</p></article></div></section>
-        <section id="evidence" class="card evidence" aria-labelledby="evidence-title"><span class="tag">근거 상태</span><h2 id="evidence-title">이 페이지를 만든 과정 자체가 근거입니다</h2><p>"AI와 협업하되 직접 검증한다"는 두 번째 활동은, 이 페이지를 만들며 Claude Code와 Codex CLI가 실제로 주고받은 대화 기록으로 뒷받침됩니다. <a href="https://github.com/alska14/ai-pair-log/blob/main/CONVERSATION.md">CONVERSATION.md 보기</a></p><details><summary>이 근거가 무엇을 증명하고, 무엇은 증명하지 않는지 보기</summary><p>이 저장소는 이 페이지 제작 과정의 실제 기록입니다(측정값을 근거로 상대 주장을 반박한 사례 포함). 다만 본문에 적힌 과거 서버 운영이나 현재 업무 시스템의 성과 자체를 독립적으로 증명하지는 않습니다. 규제 대응 업무의 고객사명·내부 코드는 비밀유지 의무로 공개하지 않습니다.</p></details></section>
-        <section id="boundary" class="card boundary" aria-labelledby="boundary-title"><span class="tag">공개하지 않는 범위</span><h2 id="boundary-title">작업은 보이되, 민감한 정보는 남기지 않습니다</h2><ul class="boundary-list"><li>실명, 연락처, 위치 같은 개인 식별 정보</li><li>고객사명과 내부 업무 프로세스</li><li>비밀번호, API 키, 비공개 저장소와 원문 문서</li></ul></section>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="김재현의 개발 포트폴리오. 운영하는 제작, 직접 검증하는 개발, 반복 업무의 제품화를 소개합니다.">
+  <meta name="theme-color" content="#f4f2eb">
+  <title>김재현 — 만들고, 검증하고, 운영합니다</title>
+  <style>
+    :root { color-scheme:light; --paper:#f4f2eb; --ink:#222820; --muted:#565d52; --accent:#3d5932; --line:#c4c8bb; --dark:#253422; --light:#f4f2eb; --soft:#cbd8bd; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:Arial,"Noto Sans KR","Malgun Gothic",system-ui,sans-serif; font-size:16px; line-height:1.75; word-break:keep-all; overflow-wrap:anywhere; }
+    a { color:inherit; text-underline-offset:5px; text-decoration-thickness:1px; }
+    a:hover { text-decoration-thickness:2px; }
+    :focus-visible { outline:3px solid #866000; outline-offset:5px; }
+    .skip-link { position:absolute; left:24px; top:-100px; z-index:5; padding:10px 16px; background:var(--ink); color:var(--paper); }
+    .skip-link:focus { top:12px; }
+    .shell { width:min(1440px,calc(100% - 112px)); margin-inline:auto; }
+    .topbar { min-height:88px; display:flex; align-items:center; justify-content:space-between; gap:24px; border-bottom:1px solid var(--ink); }
+    .brand { display:flex; align-items:center; gap:14px; text-decoration:none; font-weight:700; }
+    .monogram { display:grid; place-items:center; width:34px; height:34px; border:1px solid var(--ink); border-radius:50%; font:italic 20px Georgia,serif; }
+    .brand small { font-size:11px; font-weight:400; letter-spacing:1px; color:var(--muted); }
+    nav ul { display:flex; flex-wrap:wrap; gap:28px; margin:0; padding:0; list-style:none; }
+    nav a { font-size:13px; text-decoration:none; }
+    nav a:hover { text-decoration:underline; }
+    p,h1,h2,h3 { margin:0; }
+    .label { font:11px/1.5 Consolas,monospace; letter-spacing:1.7px; text-transform:uppercase; color:var(--muted); }
+    .hero { display:grid; grid-template-columns:minmax(0,1.65fr) minmax(0,1fr); gap:64px; padding:44px 0 40px; align-items:stretch; }
+    .intro .label { display:flex; gap:12px; align-items:center; }
+    .intro .label::before { content:""; width:7px; height:7px; border-radius:50%; background:var(--accent); }
+    h1 { margin-top:20px; font-size:clamp(40px,4.1vw,66px); font-weight:600; line-height:1.22; letter-spacing:-3px; word-break:keep-all; overflow-wrap:normal; }
+    h1 span { display:block; }
+    h1 .accent { color:var(--accent); }
+    .lead { max-width:610px; margin-top:22px; font-size:15px; color:var(--muted); }
+    .intro-foot { display:flex; flex-wrap:wrap; gap:12px 24px; margin-top:26px; font:11px/1.6 Consolas,monospace; letter-spacing:.8px; color:var(--muted); }
+    .evidence { min-width:0; padding:28px 30px; background:var(--dark); color:var(--light); display:flex; flex-direction:column; }
+    .evidence .label { color:var(--soft); }
+    .evidence h2 { margin:18px 0 14px; font-size:26px; line-height:1.4; letter-spacing:-1px; font-weight:500; }
+    .evidence > p:not(.label) { font-size:13px; color:var(--soft); }
+    .record-link { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:20px; padding:12px 0; border-top:1px solid #718169; border-bottom:1px solid #718169; font-size:13px; text-decoration:none; }
+    .record-link span { font-size:20px; }
+    details { margin-top:16px; font-size:12px; }
+    summary { cursor:pointer; padding:4px 0; }
+    details p { margin-top:12px; color:var(--soft); }
+    .evidence :focus-visible { outline-color:var(--soft); }
+    .section-heading { display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:12px; border-top:1px solid var(--ink); padding:20px 0 26px; }
+    h2 { font-size:23px; letter-spacing:-.8px; font-weight:600; line-height:1.4; }
+    .section-heading h2 span { margin-right:20px; color:var(--muted); font:11px Consolas,monospace; letter-spacing:1px; }
+    .section-heading > p { color:var(--muted); font-size:12px; }
+    .activities { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:32px; }
+    .story { min-width:0; padding:0 28px 10px 0; border-right:1px solid var(--line); }
+    .story:last-child { padding-right:0; border-right:0; }
+    .story-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:22px; }
+    .number { font:italic 46px/1 Georgia,serif; color:var(--accent); letter-spacing:-2px; }
+    .stack { font:10px/1.6 Consolas,monospace; letter-spacing:.5px; color:var(--muted); text-align:right; }
+    h3 { font-size:21px; line-height:1.45; letter-spacing:-.7px; font-weight:600; }
+    .outcome { margin:12px 0 20px; color:var(--accent); font-size:13px; font-weight:700; }
+    .story dl { margin:0; font-size:14px; color:var(--muted); }
+    .story dl div { margin-top:14px; }
+    dt { margin-bottom:4px; font-size:11px; font-weight:700; color:var(--ink); }
+    dd { margin:0; }
+    .bottom { display:grid; grid-template-columns:1fr 1fr; gap:64px; margin-top:52px; padding:28px 0 42px; border-top:1px solid var(--ink); }
+    .bottom h2 { margin-top:10px; font-size:21px; }
+    .facts { margin:20px 0 0; padding:0; list-style:none; font-size:13px; color:var(--muted); }
+    .facts li { display:grid; grid-template-columns:90px 1fr; gap:14px; border-top:1px solid var(--line); padding:11px 0; }
+    .facts strong { color:var(--ink); font-weight:500; }
+    .boundary ul { padding-left:18px; color:var(--muted); font-size:13px; margin:20px 0 0; }
+    .boundary li + li { margin-top:8px; }
+    .boundary .privacy-note { margin-top:16px; color:var(--muted); font-size:12px; }
+    footer { display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; border-top:1px solid var(--ink); padding:20px 0 28px; color:var(--muted); font-size:11px; }
+    @media(min-width:1600px) { .hero { padding-top:56px; padding-bottom:52px; gap:96px; } .evidence { padding:32px 36px; } .lead { font-size:16px; } }
+    @media(max-width:1050px) { .shell { width:calc(100% - 64px); } .hero { gap:32px; grid-template-columns:1.3fr 1fr; } h1 { font-size:40px; letter-spacing:-2px; } .evidence { padding:24px; } .activities { gap:24px; } .story { padding-right:20px; } }
+    @media(max-width:760px) { .shell { width:calc(100% - 40px); } .topbar { min-height:100px; flex-wrap:wrap; gap:14px; padding:18px 0; } .brand small { display:none; } nav ul { gap:20px; } .hero { grid-template-columns:1fr; padding-top:32px; gap:28px; } h1 { font-size:clamp(30px,7vw,48px); letter-spacing:-1.8px; } .lead { font-size:14px; } .activities { grid-template-columns:1fr; gap:28px; } .story { border-right:0; border-bottom:1px solid var(--line); padding:0 0 28px; } .story:last-child { border-bottom:0; } .story-top { margin-bottom:16px; } .bottom { grid-template-columns:1fr; gap:32px; margin-top:32px; } .section-heading h2 span { margin-right:10px; } }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">본문으로 건너뛰기</a>
+  <header class="shell topbar">
+    <a class="brand" href="#intro"><span class="monogram" aria-hidden="true">j.</span> 김재현 <small>DEVELOPER / BUILDER</small></a>
+    <nav aria-label="페이지 탐색"><ul><li><a href="#intro">소개</a></li><li><a href="#activity">활동</a></li><li><a href="#evidence">근거</a></li><li><a href="#boundary">공개 범위</a></li></ul></nav>
+  </header>
+  <main class="shell" id="content" tabindex="-1">
+    <div class="hero">
+      <section class="intro" id="intro" aria-labelledby="page-title">
+        <p class="label">Product-minded developer</p>
+        <h1 id="page-title"><span>만드는 속도에,</span><span class="accent">검증의 깊이를.</span></h1>
+        <p class="lead">이 페이지는 반복 업무를 제품으로 바꾸고 싶은 동료와 협업 상대에게, 김재현의 개발 방식과 실제 검증 경험을 보여줍니다.</p>
+        <div class="intro-foot"><span>BACKEND &amp; AUTOMATION</span><span>만들고 · 검증하고 · 운영합니다</span></div>
+      </section>
+      <section class="evidence" id="evidence" aria-labelledby="evidence-title">
+        <p class="label">Open record / 공개 근거</p>
+        <h2 id="evidence-title">주장보다 기록으로.<br>협업의 과정을 공개합니다.</h2>
+        <p>두 번째 활동의 ‘직접 검증하는 태도’를 이 페이지의 제작 기록에 연결합니다. Claude Code와 Codex CLI의 피드백, 수정과 측정 결과를 읽을 수 있습니다.</p>
+        <a class="record-link" href="https://github.com/alska14/ai-pair-log/blob/main/CONVERSATION.md">제작·검증 대화 기록 보기 <span aria-hidden="true">↗</span></a>
+        <details><summary>이 근거가 증명하는 범위</summary><p>이 저장소는 이 페이지 제작 과정의 실제 기록입니다. 측정값으로 서로의 주장을 검토한 사례를 포함하며, 기록 중 ‘미검증’으로 표시된 항목은 확인된 결과가 아닙니다. 과거 서버 운영 순위나 현재 업무 시스템의 성과 자체를 독립적으로 입증하지는 않습니다. 고객사명과 내부 코드는 공개하지 않습니다.</p></details>
+      </section>
+    </div>
+    <section id="activity" aria-labelledby="activity-title">
+      <div class="section-heading"><h2 id="activity-title"><span>01 / PRACTICE</span>경험으로 쌓은 개발 방식</h2><p>운영의 경험에서, 업무의 자동화까지</p></div>
+      <div class="activities">
+        <article class="story">
+          <div class="story-top"><span class="number" aria-hidden="true">01</span><p class="stack">SERVER &amp; PLUGINS<br>PocketMine-MP</p></div>
+          <h3>만드는 것에서<br>운영하는 것까지</h3>
+          <p class="outcome">한국 모바일 마인크래프트 서버 1위 규모</p>
+          <dl><div><dt>상황</dt><dd>약 10년 전, 모바일 마인크래프트 서버를 직접 만들고 운영했습니다.</dd></div><div><dt>행동</dt><dd>PocketMine-MP 기반 플러그인을 직접 개발하고 서버 운영까지 맡았습니다.</dd></div><div><dt>결과</dt><dd>한국 내 모바일 마인크래프트 서버 중 1위 규모에 도달했습니다. 제작 이후의 운영도 책임지는 경험을 쌓았습니다.</dd></div></dl>
+        </article>
+        <article class="story">
+          <div class="story-top"><span class="number" aria-hidden="true">02</span><p class="stack">AI-ASSISTED DEVELOPMENT<br>Compare → verify → document</p></div>
+          <h3>AI와 빠르게 만들고,<br>판단은 직접</h3>
+          <p class="outcome">실제 데이터 대조 · v0.1–v0.12 기록</p>
+          <dl><div><dt>상황</dt><dd>규제 대응 서류 자동 분류 과정에서 서로 다른 시점에 개발한 두 로직의 결과가 갈렸습니다.</dd></div><div><dt>행동</dt><dd>표준 라이브러리 구현과 식별자 매칭 결과를 실제 데이터로 대조하고 하나로 합쳤습니다.</dd></div><div><dt>결과</dt><dd>검증한 판정 로직을 남기고, 완료·미완료 범위를 버전 문서로 구분했습니다. 이 페이지에서도 같은 검증 태도를 기록합니다.</dd></div></dl>
+        </article>
+        <article class="story">
+          <div class="story-top"><span class="number" aria-hidden="true">03</span><p class="stack">BACKEND &amp; AUTOMATION<br>Node.js / Python / PostgreSQL</p></div>
+          <h3>반복되는 업무를<br>작동하는 제품으로</h3>
+          <p class="outcome">제출 포털 · 문서 판정 · 견적 자동화</p>
+          <dl><div><dt>상황</dt><dd>화장품·포장재 규제 대응 업무에 반복적인 서류와 견적 처리가 남아 있었습니다.</dd></div><div><dt>행동</dt><dd>Express·PostgreSQL·Prisma 기반 제출 포털, Python 문서 판정 엔진과 견적 시스템을 설계하고 Railway에 배포했습니다.</dd></div><div><dt>결과</dt><dd>데이터 영속성과 접근 제어를 갖춘 시스템을 실제 운영 환경에서 이어가고 있습니다.</dd></div></dl>
+        </article>
       </div>
-      <p class="note">이 페이지는 외부 라이브러리 없이 동작하는 단일 HTML 문서입니다.</p>
-    </main>
-    <footer><div class="shell">© 2026 김재현. 공개 범위는 이 페이지에 적힌 내용으로 한정합니다.</div></footer>
-  </body>
+    </section>
+    <div class="bottom">
+      <section aria-labelledby="public-title"><p class="label">02 / Profile</p><h2 id="public-title">지금 집중하는 것</h2><ul class="facts"><li><strong>관심사</strong><span>반복적인 서류·견적 처리의 자동화</span></li><li><strong>개발 방식</strong><span>AI를 활용하고 실제 데이터로 결과를 대조 검증</span></li><li><strong>기술의 방향</strong><span>Node.js·Python 기반 백엔드와 클라우드 운영</span></li></ul></section>
+      <section class="boundary" id="boundary" aria-labelledby="boundary-title"><p class="label">03 / Boundaries</p><h2 id="boundary-title">공개에도 명확한 경계를 둡니다.</h2><ul><li>개인 연락처와 상세 위치 등 사적인 식별 정보</li><li>고객사명과 내부 업무 프로세스</li><li>비밀번호, API 키, 비공개 코드와 원문 문서</li></ul><p class="privacy-note">이름과 기술·역할은 공개하되, 업무 내용은 공개 가능한 수준으로 한정합니다.</p></section>
+    </div>
+  </main>
+  <footer class="shell"><p>© 2026 김재현</p><p>Build with intent. Verify with evidence.</p><a href="#intro">처음으로 ↑</a></footer>
+</body>
 </html>
