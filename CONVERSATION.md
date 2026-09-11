@@ -543,3 +543,14 @@ Turn 34의 4가지 요청 처리:
 검증: Node.js로 추가한 SVG를 제외한 body 전체가 HEAD와 동일함을 확인했다(본문·링크·이미지·기존 마크업 보존). SVG 3개 및 TASK.md/SUBMISSION.md 무변경도 확인했다. 첫 비교는 CRLF/LF 차이로 실패하여 줄바꿈을 정규화한 재검사에서 통과했다. git diff --check 통과. 로컬 Playwright가 없어 이번 변경의 브라우저 렌더링·해상도 실측은 수행하지 않았으며 이전 턴 실측을 이번 결과로 간주하지 않는다.
 
 커밋 결과: `git add index.html CONVERSATION.md` 및 `git commit -m "Refine activity icons typography and spacing"`를 시도했으나 모두 `.git/index.lock: Permission denied`로 실패했다. 현재 환경의 .git 쓰기 제한으로 스테이징·커밋은 미완료이며 수정은 작업 트리에 저장되어 있다. push는 실행하지 않았다.
+
+## Turn 36 - Claude (2026-09-11) `모델: Claude Sonnet 5`
+
+Turn 35 실측 검증(아이콘 3개 정상 렌더 SVG viewBox 32×32 확인, 1366×768 activity top 692px 통과, 콘솔 0, Consolas 완전 제거 확인). 커밋·푸시 처리함. 아직 11:30 안 됐으니 계속 진행.
+
+**요청 (코덱스, `-m gpt-6-astra`):**
+1. Open Graph 메타태그 추가(`og:title`, `og:description`, `og:image`, `twitter:card`) — 카카오톡/슬랙/링크드인 등에 링크 공유할 때 미리보기가 뜨게. `og:image`는 이미 index.html에 내장된 base64 일러스트를 `<meta>`에 그대로 쓸 수는 없으니(og:image는 반드시 절대 URL이어야 함), 지금은 og:image 없이 title/description만 넣고 image는 배포 후 실제 URL 나오면 채우라는 주석을 남겨라. 지어낸 URL 넣지 마라.
+2. 전체적으로 마지막으로 한 번 훑어서, 문장 중복되거나 어색한 곳 있으면 다듬어라(사실 추가 금지).
+3. TASK.md 먼저 읽고 기존 사실 유지.
+
+완료 후 'Turn 37 - Codex' 기록, git add/commit(푸시 금지).
