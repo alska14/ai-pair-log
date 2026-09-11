@@ -6,11 +6,15 @@
   <meta name="description" content="김재현의 개발 포트폴리오. 운영하는 제작, 직접 검증하는 개발, 반복 업무의 제품화를 소개합니다.">
   <meta name="theme-color" content="#f4f2eb">
   <title>김재현 — 만들고, 검증하고, 운영합니다</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root { color-scheme:light; --paper:#f4f2eb; --ink:#222820; --muted:#565d52; --accent:#3d5932; --line:#c4c8bb; --dark:#253422; --light:#f4f2eb; --soft:#cbd8bd; }
     * { box-sizing:border-box; }
     html { scroll-behavior:smooth; }
-    body { margin:0; background:var(--paper); color:var(--ink); font-family:Arial,"Noto Sans KR","Malgun Gothic",system-ui,sans-serif; font-size:16px; line-height:1.75; word-break:keep-all; overflow-wrap:anywhere; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:"Inter","Noto Sans KR","Malgun Gothic",system-ui,sans-serif; font-size:16px; line-height:1.75; word-break:keep-all; overflow-wrap:anywhere; }
+    .serif { font-family:"Fraunces","Georgia",serif; }
     a { color:inherit; text-underline-offset:5px; text-decoration-thickness:1px; }
     a:hover { text-decoration-thickness:2px; }
     :focus-visible { outline:3px solid #866000; outline-offset:5px; }
@@ -19,7 +23,7 @@
     .shell { width:min(1440px,calc(100% - 112px)); margin-inline:auto; }
     .topbar { min-height:88px; display:flex; align-items:center; justify-content:space-between; gap:24px; border-bottom:1px solid var(--ink); }
     .brand { display:flex; align-items:center; gap:14px; text-decoration:none; font-weight:700; }
-    .monogram { display:grid; place-items:center; width:34px; height:34px; border:1px solid var(--ink); border-radius:50%; font:italic 20px Georgia,serif; }
+    .monogram { display:grid; place-items:center; width:34px; height:34px; border:1px solid var(--ink); border-radius:50%; font:italic 500 20px "Fraunces",Georgia,serif; }
     .brand small { font-size:11px; font-weight:400; letter-spacing:1px; color:var(--muted); }
     nav ul { display:flex; flex-wrap:wrap; gap:28px; margin:0; padding:0; list-style:none; }
     nav a { font-size:13px; text-decoration:none; }
@@ -38,7 +42,11 @@
     .evidence .label { color:var(--soft); }
     .evidence h2 { margin:18px 0 14px; font-size:26px; line-height:1.4; letter-spacing:-1px; font-weight:500; }
     .evidence > p:not(.label) { font-size:13px; color:var(--soft); }
-    .record-link { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:20px; padding:12px 0; border-top:1px solid #718169; border-bottom:1px solid #718169; font-size:13px; text-decoration:none; }
+    .proof { margin:18px 0 0; padding:14px 16px; border-left:3px solid var(--soft); background:rgba(255,255,255,.05); }
+    .proof p { margin:0; font-size:13px; line-height:1.65; color:var(--light); }
+    .proof code { padding:1px 5px; background:rgba(255,255,255,.12); border-radius:3px; font-size:12px; }
+    .proof cite { display:block; margin-top:8px; font:11px/1.5 Consolas,monospace; font-style:normal; letter-spacing:.3px; color:var(--soft); }
+    .record-link { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:14px; padding:12px 0; border-top:1px solid #718169; border-bottom:1px solid #718169; font-size:13px; text-decoration:none; }
     .record-link span { font-size:20px; }
     details { margin-top:16px; font-size:12px; }
     summary { cursor:pointer; padding:4px 0; }
@@ -52,7 +60,7 @@
     .story { min-width:0; padding:0 28px 10px 0; border-right:1px solid var(--line); }
     .story:last-child { padding-right:0; border-right:0; }
     .story-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:22px; }
-    .number { font:italic 46px/1 Georgia,serif; color:var(--accent); letter-spacing:-2px; }
+    .number { font:italic 500 46px/1 "Fraunces",Georgia,serif; color:var(--accent); letter-spacing:-2px; }
     .stack { font:10px/1.6 Consolas,monospace; letter-spacing:.5px; color:var(--muted); text-align:right; }
     h3 { font-size:21px; line-height:1.45; letter-spacing:-.7px; font-weight:600; }
     .outcome { margin:12px 0 20px; color:var(--accent); font-size:13px; font-weight:700; }
@@ -93,7 +101,11 @@
         <p class="label">Open record / 공개 근거</p>
         <h2 id="evidence-title">주장보다 기록으로.<br>협업의 과정을 공개합니다.</h2>
         <p>두 번째 활동의 ‘직접 검증하는 태도’를 이 페이지의 제작 기록에 연결합니다. Claude Code와 Codex CLI의 피드백, 수정과 측정 결과를 읽을 수 있습니다.</p>
-        <a class="record-link" href="https://github.com/alska14/ai-pair-log/blob/main/CONVERSATION.md">제작·검증 대화 기록 보기 <span aria-hidden="true">↗</span></a>
+        <blockquote class="proof">
+          <p>“근거 카드 제목 일부가 첫 화면 하단에 걸치도록 조정했다”고 썼는데 <strong>사실이 아님</strong>. <code>#evidence</code> top: 1366×768 → 1009px(0% 노출), 1920×1080 → 1055px.</p>
+          <cite>Claude Code, Turn 9 — 실측으로 Codex의 미검증 주장을 반박한 실제 기록</cite>
+        </blockquote>
+        <a class="record-link" href="https://github.com/alska14/ai-pair-log/blob/main/CONVERSATION.md">전체 대화 기록 17턴 보기 <span aria-hidden="true">↗</span></a>
         <details><summary>이 근거가 증명하는 범위</summary><p>이 저장소는 이 페이지 제작 과정의 실제 기록입니다. 측정값으로 서로의 주장을 검토한 사례를 포함하며, 기록 중 ‘미검증’으로 표시된 항목은 확인된 결과가 아닙니다. 과거 서버 운영 순위나 현재 업무 시스템의 성과 자체를 독립적으로 입증하지는 않습니다. 고객사명과 내부 코드는 공개하지 않습니다.</p></details>
       </section>
     </div>
