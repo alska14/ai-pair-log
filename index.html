@@ -78,15 +78,26 @@
     .story dl div { margin-top:14px; }
     dt { margin-bottom:4px; font-size:11px; font-weight:700; color:var(--ink); }
     dd { margin:0; }
-    .bottom { display:grid; grid-template-columns:1fr 1fr; gap:64px; margin-top:48px; padding:24px 0 40px; border-top:1px solid var(--ink); }
-    .bottom h2 { margin-top:10px; font-size:21px; }
-    .facts { margin:20px 0 0; padding:0; list-style:none; font-size:15px; color:var(--muted); }
-    .facts li { display:grid; grid-template-columns:90px 1fr; gap:14px; border-top:1px solid var(--line); padding:11px 0; }
-    .facts strong { color:var(--ink); font-weight:500; }
-    .boundary ul { padding-left:18px; color:var(--muted); font-size:15px; margin:20px 0 0; }
-    .boundary li + li { margin-top:8px; }
-    .boundary .privacy-note { margin-top:16px; color:var(--muted); font-size:12px; }
-    footer { display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; border-top:1px solid var(--ink); padding:20px 0 28px; color:var(--muted); font-size:11px; }
+    .bottom { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:48px; padding:24px 0 40px; border-top:1px solid var(--ink); }
+    .bottom > section { min-width:0; padding:28px 30px; border:1px solid var(--line); }
+    .profile { background:#e9eddf; }
+    .bottom .label { display:flex; align-items:center; gap:12px; }
+    .bottom .label::before { content:""; width:7px; height:7px; flex:none; background:var(--accent); border-radius:50%; }
+    .bottom .boundary .label::before { background:transparent; border:1px solid var(--muted); border-radius:0; }
+    .bottom h2 { margin-top:12px; font-size:23px; }
+    .facts { margin:24px 0 0; padding:0; list-style:none; font-size:15px; color:var(--muted); }
+    .facts li { display:grid; grid-template-columns:80px minmax(0,1fr); gap:16px; border-top:1px solid var(--line); padding:16px 0; }
+    .facts li:last-child { padding-bottom:0; }
+    .facts strong { color:var(--ink); font-size:13px; font-weight:600; }
+    .boundary ul { padding:0; list-style:none; color:var(--muted); font-size:15px; margin:24px 0 0; }
+    .boundary li { display:grid; grid-template-columns:80px minmax(0,1fr); gap:16px; border-top:1px solid var(--line); padding:16px 0; }
+    .boundary li strong { color:var(--ink); font-size:13px; font-weight:600; }
+    .boundary .privacy-note { margin-top:20px; padding-left:14px; border-left:2px solid var(--accent); color:var(--muted); font-size:13px; }
+    footer { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px 24px; border-top:1px solid var(--ink); padding:24px 0 32px; color:var(--muted); font-size:13px; }
+    .footer-name { color:var(--ink); font-weight:600; }
+    footer a { display:inline-flex; align-items:center; gap:16px; min-height:44px; }
+    @media(max-width:1050px) { .bottom > section { padding:24px; } .facts li,.boundary li { grid-template-columns:1fr; gap:6px; } }
+    @media(max-width:760px) { .bottom > section { padding:24px 20px; } footer > p:nth-child(2) { flex-basis:100%; order:1; } }
     @media(min-width:1600px) { .hero { padding-top:48px; padding-bottom:40px; gap:96px; } .evidence { padding:32px 36px; } .lead { font-size:16px; } }
     @media(max-width:1050px) { .shell { width:calc(100% - 64px); } .hero { gap:32px; grid-template-columns:1.3fr 1fr; } h1 { font-size:40px; letter-spacing:-2px; } .evidence { padding:24px; } .activities { gap:24px; } .story { padding-right:20px; } }
     @media(max-width:760px) { .shell { width:calc(100% - 40px); } .topbar { min-height:100px; flex-wrap:wrap; gap:14px; padding:18px 0; } .brand small { display:none; } nav ul { gap:20px; } .hero { grid-template-columns:1fr; padding-top:32px; gap:28px; } h1 { font-size:clamp(30px,7vw,48px); letter-spacing:-1.8px; } .lead { font-size:16px; } .activities { grid-template-columns:1fr; gap:28px; } .story { border-right:0; border-bottom:1px solid var(--line); padding:0 0 28px; } .story:last-child { border-bottom:0; } .story-top { margin-bottom:16px; } .bottom { grid-template-columns:1fr; gap:32px; margin-top:32px; } .section-heading h2 span { margin-right:10px; } }
@@ -96,7 +107,7 @@
 <body>
   <a class="skip-link" href="#content">본문으로 건너뛰기</a>
   <header class="shell topbar">
-    <a class="brand" href="#intro"><span class="monogram" aria-hidden="true">h.</span> 김재현 <small>DEVELOPER / BUILDER</small></a>
+    <a class="brand" href="#intro"><span class="monogram" aria-hidden="true">j.</span> 김재현 <small>DEVELOPER / BUILDER</small></a>
     <nav aria-label="페이지 탐색"><ul><li><a href="#intro">소개</a></li><li><a href="#evidence">근거</a></li><li><a href="#activity">활동</a></li><li><a href="#boundary">공개 범위</a></li></ul></nav>
   </header>
   <main class="shell" id="content" tabindex="-1">
@@ -144,10 +155,10 @@
       </div>
     </section>
     <div class="bottom">
-      <section aria-labelledby="public-title"><p class="label">02 / Profile</p><h2 id="public-title">지금 집중하는 것</h2><ul class="facts"><li><strong>관심사</strong><span>반복적인 서류·견적 처리의 자동화</span></li><li><strong>개발 방식</strong><span>AI를 활용하고 실제 데이터로 결과를 대조 검증</span></li><li><strong>기술의 방향</strong><span>Node.js·Python 기반 백엔드와 클라우드 운영</span></li></ul></section>
-      <section class="boundary" id="boundary" aria-labelledby="boundary-title"><p class="label">03 / Boundaries</p><h2 id="boundary-title">공개에도 명확한 경계를 둡니다.</h2><ul><li>개인 연락처와 상세 위치 등 사적인 식별 정보</li><li>고객사명과 내부 업무 프로세스</li><li>비밀번호, API 키, 비공개 코드와 원문 문서</li></ul><p class="privacy-note">이름은 실명을 사용합니다. 기술과 경험을 소개하되 고객사명과 내부 업무 프로세스는 공개하지 않습니다.</p></section>
+      <section class="profile" aria-labelledby="public-title"><p class="label">02 / 공개 프로필</p><h2 id="public-title">지금 집중하는 것</h2><ul class="facts"><li><strong>관심사</strong><span>반복적인 서류·견적 처리의 자동화</span></li><li><strong>개발 방식</strong><span>AI를 활용하고 실제 데이터로 결과를 대조 검증</span></li><li><strong>기술의 방향</strong><span>Node.js·Python 기반 백엔드와 클라우드 운영</span></li></ul></section>
+      <section class="boundary" id="boundary" aria-labelledby="boundary-title"><p class="label">03 / 비공개 범위</p><h2 id="boundary-title">공개에도 명확한 경계를 둡니다.</h2><ul><li><strong>개인정보</strong><span>개인 연락처와 상세 위치 등 사적인 식별 정보</span></li><li><strong>업무 기밀</strong><span>고객사명과 내부 업무 프로세스</span></li><li><strong>접근·자료</strong><span>비밀번호, API 키, 비공개 코드와 원문 문서</span></li></ul><p class="privacy-note">이름은 실명을 사용합니다. 기술과 경험을 소개하되 고객사명과 내부 업무 프로세스는 공개하지 않습니다.</p></section>
     </div>
   </main>
-  <footer class="shell"><p>© 2026 김재현</p><p>Build with intent. Verify with evidence.</p><a href="#intro">처음으로 ↑</a></footer>
+  <footer class="shell"><p class="footer-name">© 2026 김재현</p><p>만들고, 검증하고, 운영합니다.</p><a href="#intro">처음으로 <span aria-hidden="true">↑</span></a></footer>
 </body>
 </html>
