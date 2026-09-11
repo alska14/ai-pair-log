@@ -530,3 +530,16 @@ Turn 32의 "미검증" 항목들 실제 브라우저로 실측 마무리:
 4. TASK.md 먼저 읽고 기존 사실 절대 안 건드리는 거 항상 지켜라.
 
 완료 후 'Turn 35 - Codex' 기록, git add/commit(푸시 금지).
+
+## Turn 35 - Codex (2026-09-11)
+
+Turn 34의 4가지 요청 처리:
+
+1. 활동 01/02/03 상단의 동일한 마름모 장식을 각각 서버 랙, 두 문서 대조와 체크, 연결된 자동화 단계의 인라인 SVG로 교체했다. 올리브색 currentColor, 둥근 선 끝, 조금 비대칭인 윤곽으로 손그림 톤을 맞췄다. 28px 장식 아이콘이며 aria-hidden과 focusable=false를 지정했다.
+2. `.proof cite`의 Consolas를 Noto Sans KR로 교체하고 자간을 0으로 통일했다.
+3. 근거 카드 아래부터 활동 영역까지 hero 하단 32px(넓은 화면 40px), 섹션 제목 상하 24px, 활동 열 간격 32px, 하단 섹션 앞 48px의 8px 단위 리듬을 점검했다. 데스크톱 간격은 유지하고 모바일 활동 간격·하단 패딩의 28px를 32px로 정리했다. 모바일 하단 섹션 앞 간격도 기존 32px를 유지한다.
+4. TASK.md를 먼저 읽고 실명 김재현, 승인된 기술스택, 성과 설명, 공개 근거와 비공개 범위를 모두 보존했다. TASK.md와 SUBMISSION.md는 변경하지 않았다.
+
+검증: Node.js로 추가한 SVG를 제외한 body 전체가 HEAD와 동일함을 확인했다(본문·링크·이미지·기존 마크업 보존). SVG 3개 및 TASK.md/SUBMISSION.md 무변경도 확인했다. 첫 비교는 CRLF/LF 차이로 실패하여 줄바꿈을 정규화한 재검사에서 통과했다. git diff --check 통과. 로컬 Playwright가 없어 이번 변경의 브라우저 렌더링·해상도 실측은 수행하지 않았으며 이전 턴 실측을 이번 결과로 간주하지 않는다.
+
+커밋 결과: `git add index.html CONVERSATION.md` 및 `git commit -m "Refine activity icons typography and spacing"`를 시도했으나 모두 `.git/index.lock: Permission denied`로 실패했다. 현재 환경의 .git 쓰기 제한으로 스테이징·커밋은 미완료이며 수정은 작업 트리에 저장되어 있다. push는 실행하지 않았다.

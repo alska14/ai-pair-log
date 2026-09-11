@@ -46,7 +46,7 @@
     .proof { margin:18px 0 0; padding:14px 16px; border-left:3px solid var(--soft); background:rgba(255,255,255,.05); }
     .proof p { margin:0; font-size:14px; line-height:1.65; color:var(--light); }
     .proof code { padding:1px 5px; background:rgba(255,255,255,.12); border-radius:3px; font-size:12px; }
-    .proof cite { display:block; margin-top:8px; font:11px/1.5 Consolas,monospace; font-style:normal; letter-spacing:.3px; color:var(--soft); }
+    .proof cite { display:block; margin-top:8px; font:11px/1.5 "Noto Sans KR",sans-serif; font-style:normal; letter-spacing:0; color:var(--soft); }
     .record-link { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:14px; padding:12px 0; border-top:1px solid #718169; border-bottom:1px solid #718169; font-size:13px; text-decoration:none; }
     .record-link span { font-size:20px; }
     details { margin-top:16px; font-size:12px; }
@@ -57,6 +57,7 @@
     h2 { font-size:23px; letter-spacing:-.8px; font-weight:600; line-height:1.4; }
     .section-heading h2 span { margin-right:20px; color:var(--muted); font:500 13px "Noto Sans KR",sans-serif; letter-spacing:0; }
     .section-heading > p { color:var(--muted); font-size:12px; }
+    /* Section rhythm: 24px heading inset, 32px card gap, 48px closing pause; 40px hero inset on wide screens. */
     .activities { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:32px; }
     .story { min-width:0; padding:0 32px 0 0; border-right:1px solid var(--line); }
     .work-motif { position:static; width:min(312px,100%); margin-top:20px; pointer-events:none; }
@@ -65,7 +66,7 @@
     .story-proof .label { display:block; margin-bottom:8px; }
     .proof-links { display:flex; flex-wrap:wrap; gap:8px 18px; margin-bottom:8px; }
     .proof-links a { color:var(--accent); font-weight:600; }
-    .story-top::after { content:""; width:9px; height:9px; background:var(--accent); transform:rotate(45deg); }
+    .story-icon { width:28px; height:28px; flex:none; color:var(--accent); fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
     .story-top .stack { margin-left:auto; margin-right:16px; }
     @media(hover:hover) and (prefers-reduced-motion:no-preference) { .proof-links a { transition:text-underline-offset .18s ease; } .proof-links a:hover { text-underline-offset:8px; } }
     .story:last-child { padding-right:0; border-right:0; }
@@ -100,8 +101,8 @@
     @media(max-width:760px) { .bottom > section { padding:24px 20px; } footer > p:nth-child(2) { flex-basis:100%; order:1; } }
     @media(min-width:1600px) { .hero { padding-top:48px; padding-bottom:40px; gap:96px; } .evidence { padding:32px 36px; } .lead { font-size:16px; } }
     @media(max-width:1050px) { .shell { width:calc(100% - 64px); } .hero { gap:32px; grid-template-columns:1.3fr 1fr; } h1 { font-size:40px; letter-spacing:-2px; } .evidence { padding:24px; } .activities { gap:24px; } .story { padding-right:20px; } }
-    @media(max-width:760px) { .shell { width:calc(100% - 40px); } .topbar { min-height:100px; flex-wrap:wrap; gap:14px; padding:18px 0; } .brand small { display:none; } nav ul { gap:20px; } .hero { grid-template-columns:1fr; padding-top:32px; gap:28px; } h1 { font-size:clamp(30px,7vw,48px); letter-spacing:-1.8px; } .lead { font-size:16px; } .activities { grid-template-columns:1fr; gap:28px; } .story { border-right:0; border-bottom:1px solid var(--line); padding:0 0 28px; } .story:last-child { border-bottom:0; } .story-top { margin-bottom:16px; } .bottom { grid-template-columns:1fr; gap:32px; margin-top:32px; } .section-heading h2 span { margin-right:10px; } }
-    @media(max-width:760px) { .intro { min-width:0; } h1 { overflow-wrap:anywhere; } nav a,.proof-links a { display:inline-flex; align-items:center; min-height:44px; } summary { min-height:44px; padding:12px 0; } .story-top { gap:12px; } .story-top::after { flex:none; } .story-top .stack { min-width:0; margin-right:0; } }
+    @media(max-width:760px) { .shell { width:calc(100% - 40px); } .topbar { min-height:100px; flex-wrap:wrap; gap:14px; padding:18px 0; } .brand small { display:none; } nav ul { gap:20px; } .hero { grid-template-columns:1fr; padding-top:32px; gap:28px; } h1 { font-size:clamp(30px,7vw,48px); letter-spacing:-1.8px; } .lead { font-size:16px; } .activities { grid-template-columns:1fr; gap:32px; } .story { border-right:0; border-bottom:1px solid var(--line); padding:0 0 32px; } .story:last-child { border-bottom:0; } .story-top { margin-bottom:16px; } .bottom { grid-template-columns:1fr; gap:32px; margin-top:32px; } .section-heading h2 span { margin-right:10px; } }
+    @media(max-width:760px) { .intro { min-width:0; } h1 { overflow-wrap:anywhere; } nav a,.proof-links a { display:inline-flex; align-items:center; min-height:44px; } summary { min-height:44px; padding:12px 0; } .story-top { gap:12px; } .story-top .stack { min-width:0; margin-right:0; } }
     @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
   </style>
 </head>
@@ -133,21 +134,21 @@
       <div class="section-heading"><h2 id="activity-title"><span>01 / PRACTICE</span>경험으로 쌓은 개발 방식</h2><p>운영의 경험에서, 업무의 자동화까지</p></div>
       <div class="activities">
         <article class="story">
-          <div class="story-top"><span class="number" aria-hidden="true">01</span><p class="stack">SERVER &amp; PLUGINS<br>PocketMine-MP</p></div>
+          <div class="story-top"><span class="number" aria-hidden="true">01</span><p class="stack">SERVER &amp; PLUGINS<br>PocketMine-MP</p><svg class="story-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M6 5.5 25 5l1 9-20 .5Z M6 18l20-.5-.5 9-20 .5Z"/><path d="M10 10h.5m4 0h7M10 22.5h.5m4 0h7M15.5 15v2.5"/></svg></div>
           <h3>만드는 것에서<br>운영하는 것까지</h3>
           <p class="outcome">한국 모바일 마인크래프트 서버 1위 규모</p>
           <dl><div><dt>상황</dt><dd>약 10년 전, 모바일 마인크래프트 서버를 직접 만들고 운영했습니다.</dd></div><div><dt>행동</dt><dd>PocketMine-MP 기반 플러그인을 직접 개발하고 서버 운영까지 맡았습니다.</dd></div><div><dt>결과</dt><dd>한국 내 모바일 마인크래프트 서버 중 1위 규모에 도달했습니다.</dd></div></dl>
           <div class="story-proof"><span class="label">Public evidence / 공개 코드</span><div class="proof-links"><a href="https://github.com/alska14/PocketMine-MP">PocketMine-MP ↗</a><a href="https://github.com/alska14/EventOnline">EventOnline ↗</a></div><p>관련 저장소 링크입니다. 서버 1위 규모를 독립적으로 입증하는 자료는 아닙니다.</p></div>
         </article>
         <article class="story">
-          <div class="story-top"><span class="number" aria-hidden="true">02</span><p class="stack">AI-ASSISTED DEVELOPMENT<br>Compare → verify → document</p></div>
+          <div class="story-top"><span class="number" aria-hidden="true">02</span><p class="stack">AI-ASSISTED DEVELOPMENT<br>Compare → verify → document</p><svg class="story-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="m5 6 9-.5v18l-9 .5Zm13-.5 9 .5-.5 10M8 10h3m-3 4h3m10-4h3"/><path d="m16 23 4 4 8-9M16 3v2"/></svg></div>
           <h3>AI와 빠르게 만들고,<br>판단은 직접</h3>
           <p class="outcome">실제 데이터 대조 · v0.1–v0.12 기록</p>
           <dl><div><dt>상황</dt><dd>규제 대응 서류 자동 분류 과정에서 서로 다른 시점에 개발한 두 로직의 결과가 갈렸습니다.</dd></div><div><dt>행동</dt><dd>표준 라이브러리 구현과 식별자 매칭 결과를 실제 데이터로 대조하고 하나로 합쳤습니다.</dd></div><div><dt>결과</dt><dd>검증한 판정 로직을 남기고, 완료·미완료 범위를 버전 문서로 구분했습니다.</dd></div></dl>
           <div class="story-proof"><span class="label">Public evidence / 검증 기록</span><div class="proof-links"><a href="https://github.com/alska14/ai-pair-log/blob/main/CONVERSATION.md">AI 협업·수정 기록 ↗</a></div><p>이 페이지의 제작·검증 과정을 확인할 수 있습니다. 업무 판정 로직과 버전 문서 원문은 비공개입니다.</p></div>
         </article>
         <article class="story">
-          <div class="story-top"><span class="number" aria-hidden="true">03</span><p class="stack">BACKEND &amp; AUTOMATION<br>Node.js / Python</p></div>
+          <div class="story-top"><span class="number" aria-hidden="true">03</span><p class="stack">BACKEND &amp; AUTOMATION<br>Node.js / Python</p><svg class="story-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="m4 5 9-.5.5 8-9 .5Zm15 14 9-.5-.5 9-9 .5ZM14 9h9v6m-3-3 3 3 3-3M9 14v9h6m-3-3 3 3-3 3"/></svg></div>
           <h3>반복되는 업무를<br>작동하는 제품으로</h3>
           <p class="outcome">클라우드에 배포해 운영 중</p>
           <dl><div><dt>상황</dt><dd>화장품·포장재 규제 대응 업무에 반복적인 서류와 견적 처리가 남아 있었습니다.</dd></div><div><dt>행동</dt><dd>Express·PostgreSQL·Prisma 기반 제출 포털, Python 문서 판정 엔진과 견적 시스템을 설계하고 Railway에 배포했습니다.</dd></div><div><dt>결과</dt><dd>데이터 영속성과 접근 제어를 갖춘 시스템을 운영하고 있습니다.</dd></div></dl>
