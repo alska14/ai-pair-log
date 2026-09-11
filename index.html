@@ -31,6 +31,7 @@
     p,h1,h2,h3 { margin:0; }
     .label { font:11px/1.5 Consolas,monospace; letter-spacing:1.7px; text-transform:uppercase; color:var(--muted); }
     .hero { display:grid; grid-template-columns:minmax(0,1.65fr) minmax(0,1fr); gap:64px; padding:44px 0 40px; align-items:stretch; }
+    .intro { position:relative; }
     .intro .label { display:flex; gap:12px; align-items:center; }
     .intro .label::before { content:""; width:7px; height:7px; border-radius:50%; background:var(--accent); }
     h1 { margin-top:20px; font-size:clamp(40px,4.1vw,66px); font-weight:600; line-height:1.22; letter-spacing:-3px; word-break:keep-all; overflow-wrap:normal; }
@@ -58,6 +59,16 @@
     .section-heading > p { color:var(--muted); font-size:12px; }
     .activities { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:32px; }
     .story { min-width:0; padding:0 28px 10px 0; border-right:1px solid var(--line); }
+    .work-motif { position:absolute; bottom:0; left:0; width:100%; height:142px; pointer-events:none; }
+    .work-motif svg { display:block; width:100%; height:100%; }
+    .story-proof { margin-top:24px; padding-top:14px; border-top:1px solid var(--line); font-size:12px; color:var(--muted); }
+    .story-proof .label { display:block; margin-bottom:8px; }
+    .proof-links { display:flex; flex-wrap:wrap; gap:8px 18px; margin-bottom:8px; }
+    .proof-links a { color:var(--accent); font-weight:600; }
+    .story-top::after { content:""; width:9px; height:9px; background:var(--accent); transform:rotate(45deg); }
+    .story-top .stack { margin-left:auto; margin-right:16px; }
+    @media(hover:hover) and (prefers-reduced-motion:no-preference) { .proof-links a { transition:text-underline-offset .18s ease; } .proof-links a:hover { text-underline-offset:8px; } }
+    @media(max-width:1050px) { .work-motif { display:none; } }
     .story:last-child { padding-right:0; border-right:0; }
     .story-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:22px; }
     .number { font:italic 500 46px/1 "Fraunces",Georgia,serif; color:var(--accent); letter-spacing:-2px; }
@@ -96,6 +107,28 @@
         <h1 id="page-title"><span>만드는 속도에,</span><span class="accent">검증의 깊이를.</span></h1>
         <p class="lead">이 페이지는 반복 업무를 제품으로 바꾸고 싶은 동료와 협업 상대에게, 김재현의 개발 방식과 실제 검증 경험을 보여줍니다.</p>
         <div class="intro-foot"><span>BACKEND &amp; AUTOMATION</span><span>만들고 · 검증하고 · 운영합니다</span></div>
+        <div class="work-motif" aria-hidden="true">
+          <svg viewBox="0 0 640 142" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <defs><pattern id="draft-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" stroke="#c4c8bb" stroke-width=".6"/></pattern></defs>
+            <rect width="640" height="142" fill="url(#draft-grid)"/>
+            <path d="M0 141H640M0 1H640" stroke="#c4c8bb"/>
+            <path d="M120 72H274M356 72H510" stroke="#3d5932" stroke-dasharray="4 6"/>
+            <path d="m257 66 7 6-7 6m236-12 7 6-7 6" stroke="#3d5932" stroke-width="2"/>
+            <g stroke="#3d5932" stroke-width="1.5" stroke-linejoin="round">
+              <path d="m43 48 40-23 40 23-40 23Z" fill="#cbd8bd"/>
+              <path d="M43 48v46l40 23V71Z" fill="#f4f2eb"/>
+              <path d="M83 71v46l40-23V48Z" fill="#3d5932"/>
+              <path d="m43 71 40 23 40-23M63 37l40 23v46M103 37 63 60v46"/>
+              <circle cx="315" cy="72" r="44" fill="#f4f2eb"/>
+              <circle cx="315" cy="72" r="34" stroke-dasharray="2 5"/>
+              <path d="m298 72 11 11 24-26" stroke-width="4"/>
+              <rect x="510" y="30" width="88" height="84" rx="5" fill="#f4f2eb"/>
+              <path d="M510 58h88M510 86h88"/>
+              <path d="M526 44h36m-36 28h36m-36 28h36"/>
+              <circle cx="583" cy="44" r="3" fill="#3d5932"/><circle cx="583" cy="72" r="3" fill="#3d5932"/><circle cx="583" cy="100" r="3" fill="#3d5932"/>
+            </g>
+          </svg>
+        </div>
       </section>
       <section class="evidence" id="evidence" aria-labelledby="evidence-title">
         <p class="label">Open record / 공개 근거</p>
@@ -105,7 +138,7 @@
           <p>“근거 카드 제목 일부가 첫 화면 하단에 걸치도록 조정했다”고 썼는데 <strong>사실이 아님</strong>. <code>#evidence</code> top: 1366×768 → 1009px(0% 노출), 1920×1080 → 1055px.</p>
           <cite>Claude Code, Turn 9 — 실측으로 Codex의 미검증 주장을 반박한 실제 기록</cite>
         </blockquote>
-        <a class="record-link" href="https://github.com/alska14/ai-pair-log/blob/main/CONVERSATION.md">전체 대화 기록 17턴 보기 <span aria-hidden="true">↗</span></a>
+        <a class="record-link" href="https://github.com/alska14/ai-pair-log/blob/main/CONVERSATION.md">전체 대화 기록 보기 <span aria-hidden="true">↗</span></a>
         <details><summary>이 근거가 증명하는 범위</summary><p>이 저장소는 이 페이지 제작 과정의 실제 기록입니다. 측정값으로 서로의 주장을 검토한 사례를 포함하며, 기록 중 ‘미검증’으로 표시된 항목은 확인된 결과가 아닙니다. 과거 서버 운영 순위나 현재 업무 시스템의 성과 자체를 독립적으로 입증하지는 않습니다. 고객사명과 내부 코드는 공개하지 않습니다.</p></details>
       </section>
     </div>
@@ -117,18 +150,21 @@
           <h3>만드는 것에서<br>운영하는 것까지</h3>
           <p class="outcome">한국 모바일 마인크래프트 서버 1위 규모</p>
           <dl><div><dt>상황</dt><dd>약 10년 전, 모바일 마인크래프트 서버를 직접 만들고 운영했습니다.</dd></div><div><dt>행동</dt><dd>PocketMine-MP 기반 플러그인을 직접 개발하고 서버 운영까지 맡았습니다.</dd></div><div><dt>결과</dt><dd>한국 내 모바일 마인크래프트 서버 중 1위 규모에 도달했습니다. 제작 이후의 운영도 책임지는 경험을 쌓았습니다.</dd></div></dl>
+          <div class="story-proof"><span class="label">Public evidence / 공개 코드</span><div class="proof-links"><a href="https://github.com/alska14/PocketMine-MP">PocketMine-MP ↗</a><a href="https://github.com/alska14/EventOnline">EventOnline ↗</a></div><p>PocketMine-MP 포크와 EventOnline 저장소로 관련 코드 활동을 공개합니다. 서버 1위 규모를 독립적으로 입증하는 자료는 아닙니다.</p></div>
         </article>
         <article class="story">
           <div class="story-top"><span class="number" aria-hidden="true">02</span><p class="stack">AI-ASSISTED DEVELOPMENT<br>Compare → verify → document</p></div>
           <h3>AI와 빠르게 만들고,<br>판단은 직접</h3>
           <p class="outcome">실제 데이터 대조 · v0.1–v0.12 기록</p>
           <dl><div><dt>상황</dt><dd>규제 대응 서류 자동 분류 과정에서 서로 다른 시점에 개발한 두 로직의 결과가 갈렸습니다.</dd></div><div><dt>행동</dt><dd>표준 라이브러리 구현과 식별자 매칭 결과를 실제 데이터로 대조하고 하나로 합쳤습니다.</dd></div><div><dt>결과</dt><dd>검증한 판정 로직을 남기고, 완료·미완료 범위를 버전 문서로 구분했습니다. 이 페이지에서도 같은 검증 태도를 기록합니다.</dd></div></dl>
+          <div class="story-proof"><span class="label">Public evidence / 검증 기록</span><div class="proof-links"><a href="https://github.com/alska14/ai-pair-log/blob/main/CONVERSATION.md">AI 협업·수정 기록 ↗</a></div><p>이 페이지의 제작·검증 과정을 확인할 수 있습니다. 업무 판정 로직과 버전 문서 원문은 비공개입니다.</p></div>
         </article>
         <article class="story">
           <div class="story-top"><span class="number" aria-hidden="true">03</span><p class="stack">BACKEND &amp; AUTOMATION<br>Node.js / Python / PostgreSQL</p></div>
           <h3>반복되는 업무를<br>작동하는 제품으로</h3>
           <p class="outcome">제출 포털 · 문서 판정 · 견적 자동화</p>
           <dl><div><dt>상황</dt><dd>화장품·포장재 규제 대응 업무에 반복적인 서류와 견적 처리가 남아 있었습니다.</dd></div><div><dt>행동</dt><dd>Express·PostgreSQL·Prisma 기반 제출 포털, Python 문서 판정 엔진과 견적 시스템을 설계하고 Railway에 배포했습니다.</dd></div><div><dt>결과</dt><dd>데이터 영속성과 접근 제어를 갖춘 시스템을 실제 운영 환경에서 이어가고 있습니다.</dd></div></dl>
+          <div class="story-proof"><span class="label">Private work / 비공개</span><p>고객사명·내부 코드·업무 자료는 비공개입니다. 공개 가능한 기술과 역할만 설명합니다.</p></div>
         </article>
       </div>
     </section>
