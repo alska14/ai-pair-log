@@ -89,7 +89,13 @@
     .story-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; }
     .number { font:italic 500 46px/1 "Fraunces",Georgia,serif; color:var(--accent); letter-spacing:-2px; }
     .stack { font:500 12px/1.6 "Noto Sans KR",sans-serif; letter-spacing:0; color:var(--muted); text-align:right; }
-    h3 { font-size:21px; line-height:1.45; letter-spacing:-1px; font-weight:600; }
+    h3 { font-size:21px; line-height:1.45; letter-spacing:-0.025em; font-weight:500; }
+    .intro h1 { font-weight:700; }
+    .proof p { letter-spacing:0.01em; }
+    .story dt { letter-spacing:0.08em; }
+    .bottom h2 { font-weight:500; letter-spacing:-0.025em; }
+    .story-icon.rank-emblem { width:46px; height:46px; stroke-width:1.5px; }
+    .rank-emblem .gem-face { fill:#e2ecdf; }
     .outcome { margin:12px 0 20px; color:var(--accent); font-size:13px; font-weight:700; }
     .story dl { margin:0; font-size:14px; color:var(--muted); }
     .story dl div { margin-top:14px; }
@@ -177,10 +183,10 @@
           <div class="story-proof is-self-reported"><span class="label">본인 제공 정보 / Self-reported</span><p>학력·전공은 본인이 제공한 정보입니다. 공개 증빙 자료는 없습니다.</p></div>
         </article>
         <article class="story">
-          <div class="story-top"><span class="number" aria-hidden="true">05</span><p class="stack">LEAGUE OF LEGENDS<br>Grandmaster</p><svg class="story-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M10 5h12v8q0 8-6 8t-6-8ZM10 8H5v5q0 5 7 5M22 8h5v5q0 5-7 5M16 21v6m-6 0h12"/></svg></div>
-          <h3>게임에서도<br>달성한 이력이 있습니다</h3><p class="outcome">리그 오브 레전드</p>
-          <dl><div><dt>상황</dt><dd>리그 오브 레전드라는 경쟁 게임을 즐겨 플레이했습니다.</dd></div><div><dt>행동</dt><dd>랭크 게임에 꾸준히 참여하며 실력을 쌓았습니다.</dd></div><div><dt>결과</dt><dd>최상위 구간인 그랜드마스터 티어를 달성했습니다.</dd></div></dl>
-          <div class="story-proof is-self-reported"><span class="label">본인 제공 정보 / Self-reported</span><p>본인이 밝힌 달성 이력입니다. 공개 기록 링크는 없습니다.</p></div>
+          <div class="story-top"><span class="number" aria-hidden="true">05</span><p class="stack">LEAGUE OF LEGENDS<br>S13 · Solo ranked peak</p><svg class="story-icon rank-emblem" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="m8 18-4 6 8 12 7 3m21-21 4 6-8 12-7 3"/><path class="gem-face" d="m15 10 18 0 7 10-16 21L8 20Z"/><path d="m15 10 9 31 9-31M8 20h32M15 10l9 10 9-10M24 4v2"/></svg></div>
+          <h3>시즌 최고 기록은<br>그랜드마스터 I입니다</h3><p class="outcome">시즌13 솔로랭크 최고 · 591 LP</p>
+          <dl><div><dt>상황</dt><dd>KR 서버에서 ‘이 말차가 식기전에#MACHA’ 계정으로 리그 오브 레전드를 플레이했습니다.</dd></div><div><dt>행동</dt><dd>시즌13 솔로랭크에 참여했고, 이후 시즌14에는 세 시즌 연속 마스터 티어를 유지했습니다.</dd></div><div><dt>결과</dt><dd>시즌13 최고 기록은 그랜드마스터 I(591 LP)입니다. 시즌 종료 기록인 다이아몬드 I(75 LP)와는 구분합니다.</dd></div></dl>
+          <div class="story-proof is-public-record"><span class="label">공개 기록 / Public record</span><div class="proof-links"><a href="https://op.gg/summoners/kr/이%20말차가%20식기전에-MACHA">OP.GG 계정 전적 ↗</a><a href="https://fow.lol">FOW.LOL 전적 검색 ↗</a></div><p>FOW.LOL에서 같은 계정을 검색한 뒤 시즌별 최고기록 툴팁을 확인할 수 있습니다. 시즌13 최고 기록의 확인 출처는 FOW.LOL이며, OP.GG 시즌 종료 기록과 다릅니다.</p></div>
         </article>
       </div>
     </section>
