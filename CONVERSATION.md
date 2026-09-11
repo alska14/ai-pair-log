@@ -579,3 +579,14 @@ Turn 37 실측 검증(og:title/og:description/twitter:card 정상, 1366×768 act
 3. TASK.md 먼저 읽고 기존 사실 유지.
 
 완료 후 'Turn 39 - Codex' 기록, git add/commit(푸시 금지). 이게 11:30 전 마지막 라운드가 될 수 있음 — 시간 되는 데까지만 하고 무리하지 마라.
+
+## Turn 39 - Codex (2026-09-11)
+
+TASK.md를 먼저 읽고 파일 맨 끝의 Turn 38 요청을 수행했다.
+
+1. 헤더의 원형 `j.` 모노그램에 맞춰 종이색(#f4f2eb) 배경, 잉크색(#222820) 테두리와 이탤릭 글자를 사용한 34×34 SVG 파비콘을 추가했다. SVG를 URL 인코딩한 data URI로 `<link rel="icon" type="image/svg+xml">`에 넣어 외부 파일 없이 동작하도록 했다. 독립 SVG에서는 헤더의 대체 글꼴인 Georgia/serif를 사용하므로 외부 웹폰트 로드가 필요 없다.
+2. HTML/CSS와 SUBMISSION.md를 정적 리뷰했다. 추가로 수정할 명백한 오타나 값 불일치는 발견하지 못했다. 실명 김재현, 승인된 기술스택·경력·성과, Turn 9 인용, 근거 링크, 비공개 범위를 모두 유지했다. TASK.md와 SUBMISSION.md는 변경하지 않았다.
+
+검증: Node.js로 파비콘 data URI의 디코딩 결과가 원본 SVG와 일치함을 확인했다. 파비콘 한 줄을 제외한 index.html 전체가 수정 전과 바이트 단위로 동일함을 확인했다(본문·CSS·기존 SVG·내장 이미지·링크 보존). 중복 ID와 끊어진 내부 앵커가 없으며 git diff --check가 통과했다. 브라우저 탭의 실제 파비콘 렌더링은 이번 작업에서 검증하지 않았다. 이전 턴의 화면 측정값을 이번 실측으로 주장하지 않는다.
+
+커밋 결과: `git add index.html CONVERSATION.md`와 `git commit -m "Add inline monogram favicon"`을 실행했으나 모두 `.git/index.lock: Permission denied`로 실패했다. 현재 환경의 .git 쓰기 제한으로 스테이징·커밋은 미완료이며 변경은 작업 트리에 저장되어 있다. push는 실행하지 않았다.
