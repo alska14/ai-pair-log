@@ -35,6 +35,16 @@
     nav a:hover { text-decoration:underline; }
     p,h1,h2,h3 { margin:0; }
     .label { font:500 13px/1.5 "Noto Sans KR",sans-serif; letter-spacing:0; color:var(--muted); }
+    .hero-band { background:var(--ink); color:var(--paper); }
+    .hero-band .topbar { border-bottom-color:rgba(244,242,235,.22); }
+    .hero-band .brand, .hero-band nav a { color:var(--paper); }
+    .hero-band .monogram { border-color:var(--paper); }
+    .hero-name { padding:56px 0 68px; }
+    .hero-kicker { margin:0 0 18px; font:600 13px "Noto Sans KR",sans-serif; letter-spacing:.14em; text-transform:uppercase; color:var(--soft); }
+    .hero-mega { margin:0; font-family:"Fraunces","Georgia",serif; font-style:italic; font-weight:500; font-size:clamp(64px,11vw,164px); line-height:0.9; letter-spacing:-0.02em; }
+    .hero-tag { margin:22px 0 0; font-size:18px; color:var(--soft); max-width:44ch; }
+    .headline { margin:0 0 20px; font-family:"Fraunces","Georgia",serif; font-weight:500; font-size:clamp(30px,3.4vw,44px); line-height:1.18; word-break:keep-all; }
+    .headline .accent { color:var(--accent); }
     .hero { display:grid; grid-template-columns:minmax(0,1.65fr) minmax(0,1fr); gap:64px; padding:36px 0 32px; align-items:stretch; }
     .intro { position:relative; }
     .intro .label { display:flex; gap:12px; align-items:center; }
@@ -195,6 +205,32 @@
       .section-heading { padding:20px 0; }
     }
     @media(min-width:1600px) { .hero { gap:80px; padding:36px 0; } }
+    @media(min-width:1051px) and (max-height:850px) {
+      .topbar { min-height:72px; }
+      .hero-name { padding:28px 0 32px; }
+      .hero-kicker { margin-bottom:8px; font-size:12px; }
+      .hero-mega { font-size:clamp(48px,7vw,92px); }
+      .hero-tag { margin-top:12px; font-size:15px; }
+      .hero { grid-template-columns:minmax(0,1.45fr) minmax(0,1fr); padding:20px 0; gap:40px; }
+      h1 { font-size:42px; margin-top:10px; }
+      .lead { font-size:15px; line-height:1.65; margin-top:12px; }
+      .intro-foot { margin-top:12px; padding-top:8px; font-size:12px; }
+      .identity-row .work-motif { flex-basis:160px; }
+      .identity-row .identity-scene { max-width:310px; }
+      .evidence { padding:20px 24px; }
+      .evidence h2 { font-size:23px; margin:10px 0; }
+      .evidence > p:not(.label) { font-size:14px; line-height:1.65; }
+      .proof { margin-top:12px; padding:10px 12px; }
+      .proof p { font-size:12px; }
+      .record-link { margin-top:10px; padding:8px 0; }
+      .evidence details { margin-top:8px; }
+      .section-heading { padding:12px 0; }
+      .story-top { margin-bottom:6px; }
+      .story-flourish { float:right; margin:4px 0 0 12px; }
+      .story h3 { font-size:21px; }
+      .outcome { margin-top:12px; }
+      .outcome-viz { margin-top:6px; }
+    }
     @media(max-width:760px) {
       .story h3 { font-size:22px; }
       .story:nth-child(n+3) { padding-top:0; }
@@ -251,15 +287,22 @@
     })();
   </script>
   <a class="skip-link" href="#content">본문으로 건너뛰기</a>
-  <header class="shell topbar">
-    <a class="brand" href="#intro"><span class="monogram" aria-hidden="true">j.</span> 김재현 <small>DEVELOPER / BUILDER</small></a>
-    <nav aria-label="페이지 탐색"><ul><li><a href="#intro">소개</a></li><li><a href="#evidence">근거</a></li><li><a href="#activity">활동</a></li><li><a href="#boundary">공개 범위</a></li></ul></nav>
-  </header>
+  <div class="hero-band">
+    <header class="shell topbar">
+      <a class="brand" href="#intro"><span class="monogram" aria-hidden="true">j.</span> 김재현 <small>DEVELOPER / BUILDER</small></a>
+      <nav aria-label="페이지 탐색"><ul><li><a href="#intro">소개</a></li><li><a href="#evidence">근거</a></li><li><a href="#activity">활동</a></li><li><a href="#boundary">공개 범위</a></li></ul></nav>
+    </header>
+    <div class="shell hero-name">
+      <p class="hero-kicker">개발 · 언어 · 게임에 걸친 경험</p>
+      <h1 id="page-title" class="hero-mega">김재현</h1>
+      <p class="hero-tag">몰입하면 끝까지 파고, 검증하며 만듭니다.</p>
+    </div>
+  </div>
   <main class="shell" id="content" tabindex="-1">
     <div class="hero">
       <section class="intro" id="intro" aria-labelledby="page-title">
         <p class="label">김재현 / 개발 · 언어 · 게임</p>
-        <h1 id="page-title"><span>서버를 만들고,</span><span class="accent">경험을 넓혀왔습니다.</span></h1>
+        <p class="headline"><span>서버를 직접 만들고,</span> <span class="accent">경험을 넓혀왔습니다.</span></p>
         <p class="lead">서버를 직접 개발해 한국 모바일 마인크래프트 서버 1위 규모로 운영했고, 지금은 AI와 업무 자동화 시스템을 만들고 있습니다. 이 페이지는 동료와 협업 상대에게 개발·언어·게임에 걸친 김재현의 경험을 소개합니다.</p>
         <p class="intro-foot">전역 후 매일 30분씩 1년 반 테니스 레슨을 받았고, 지금도 즐겨 칩니다.</p>
         <div class="identity-row">
