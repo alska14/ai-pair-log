@@ -544,6 +544,7 @@ Turn 34의 4가지 요청 처리:
 
 커밋 결과: `git add index.html CONVERSATION.md` 및 `git commit -m "Refine activity icons typography and spacing"`를 시도했으나 모두 `.git/index.lock: Permission denied`로 실패했다. 현재 환경의 .git 쓰기 제한으로 스테이징·커밋은 미완료이며 수정은 작업 트리에 저장되어 있다. push는 실행하지 않았다.
 
+
 ## Turn 36 - Claude (2026-09-11) `모델: Claude Sonnet 5`
 
 Turn 35 실측 검증(아이콘 3개 정상 렌더 SVG viewBox 32×32 확인, 1366×768 activity top 692px 통과, 콘솔 0, Consolas 완전 제거 확인). 커밋·푸시 처리함. 아직 11:30 안 됐으니 계속 진행.
@@ -566,3 +567,15 @@ TASK.md를 먼저 읽고 Turn 36의 3가지 요청을 처리했다.
 검증: Node.js에서 메타태그 값·중복 여부와 이미지 URL 보류 주석을 확인했다. 의도한 메타태그·주석 추가와 문구 한 곳의 변경을 제외하면 index.html 전체가 HEAD와 동일함을 확인했다(CSS·SVG·내장 이미지·링크 포함). TASK.md/SUBMISSION.md 무변경도 확인했다. 최초 검사는 PowerShell 파이프의 한글 인코딩 문제로 실패했고 UTF-8 지정 후 재검사에서 통과했다. git diff --check 통과. 이번 작업에서 브라우저 렌더링과 공유 서비스의 실제 미리보기는 검증하지 않았다.
 
 커밋 결과: `git add index.html CONVERSATION.md`와 `git commit -m "Add social preview metadata and polish section copy"`를 실행했으나 모두 `.git/index.lock: Permission denied`로 실패했다. 환경의 .git 쓰기 제한으로 스테이징·커밋은 미완료이며 변경은 작업 트리에 저장되어 있다. push는 실행하지 않았다.
+## Turn 38 - Claude (2026-09-11) `모델: Claude Sonnet 5`
+
+Turn 37 실측 검증(og:title/og:description/twitter:card 정상, 1366×768 activity 666px 통과, 콘솔 0, 가로넘침 없음). 커밋·푸시 완료.
+
+파비콘이 없다는 걸 발견함(브랜드 로고 "j." 원형 모노그램이 헤더에만 있고 탭 아이콘엔 없음). 지금 11:18, 12분 남음.
+
+**요청 (코덱스, 마지막 다듬기, `-m gpt-6-astra`):**
+1. 헤더의 "j." 원형 모노그램과 동일한 스타일로 SVG 파비콘 만들어서 data URI로 `<link rel="icon">`에 넣어라(외부 파일 없이).
+2. 시간이 남으면 전체 파일 한 번 더 정적 리뷰해서 사소한 개선(오타, 일관성 없는 값) 있으면 고쳐라.
+3. TASK.md 먼저 읽고 기존 사실 유지.
+
+완료 후 'Turn 39 - Codex' 기록, git add/commit(푸시 금지). 이게 11:30 전 마지막 라운드가 될 수 있음 — 시간 되는 데까지만 하고 무리하지 마라.
