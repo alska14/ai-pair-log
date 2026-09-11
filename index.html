@@ -64,8 +64,8 @@
     .section-heading h2 span { margin-right:20px; color:var(--muted); font:500 13px "Noto Sans KR",sans-serif; letter-spacing:0; }
     .section-heading > p { color:var(--muted); font-size:12px; }
     /* Section rhythm: 24px heading inset, 32px card gap, 48px closing pause; 40px hero inset on wide screens. */
-    .activities { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:32px; }
-    .story { min-width:0; padding:0 32px 0 0; border-right:1px solid var(--line); }
+    .activities { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:32px; }
+    .story { grid-column:span 2; min-width:0; padding:0 32px 0 0; border-right:1px solid var(--line); }
     .work-motif { position:static; width:min(312px,100%); margin-top:20px; pointer-events:none; }
     .work-motif img { display:block; width:100%; height:auto; }
     .story-proof { --proof-color:var(--accent); --proof-wash:#e9eddf; margin-top:24px; padding-top:14px; border-top:2px solid var(--proof-color); font-size:12px; color:var(--muted); }
@@ -85,7 +85,7 @@
     .story-top .stack { margin-left:auto; margin-right:16px; }
     @media(hover:hover) and (prefers-reduced-motion:no-preference) { .proof-links a { transition:text-underline-offset .18s ease; } .proof-links a:hover { text-underline-offset:8px; } }
     .story:nth-child(3n),.story:last-child { padding-right:0; border-right:0; }
-    .story:nth-child(n+4) { padding-top:24px; border-top:1px solid var(--line); }
+    .story:nth-child(n+4) { grid-column:span 3; padding-top:24px; border-top:1px solid var(--line); }
     .story-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; }
     .number { font:italic 500 46px/1 "Fraunces",Georgia,serif; color:var(--accent); letter-spacing:-2px; }
     .stack { font:500 12px/1.6 "Noto Sans KR",sans-serif; letter-spacing:0; color:var(--muted); text-align:right; }
@@ -118,7 +118,7 @@
     @media(min-width:1600px) { .hero { padding-top:48px; padding-bottom:40px; gap:96px; } .evidence { padding:32px 36px; } .lead { font-size:16px; } }
     @media(max-width:1050px) { .shell { width:calc(100% - 64px); } .hero { gap:32px; grid-template-columns:1.3fr 1fr; } h1 { font-size:40px; letter-spacing:-2px; } .evidence { padding:24px; } .activities { gap:24px; } .story { padding-right:20px; } }
     @media(max-width:760px) { .shell { width:calc(100% - 40px); } .topbar { min-height:100px; flex-wrap:wrap; gap:14px; padding:18px 0; } .brand small { display:none; } nav ul { gap:20px; } .hero { grid-template-columns:1fr; padding-top:32px; gap:28px; } h1 { font-size:clamp(30px,7vw,48px); letter-spacing:-2px; } .lead { font-size:16px; } .activities { grid-template-columns:1fr; gap:32px; } .story { border-right:0; border-bottom:1px solid var(--line); padding:0 0 32px; } .story:last-child { border-bottom:0; } .story-top { margin-bottom:16px; } .bottom { grid-template-columns:1fr; gap:32px; margin-top:32px; } .section-heading h2 span { margin-right:10px; } }
-    @media(max-width:760px) { .intro { min-width:0; } h1 { overflow-wrap:anywhere; } nav a,.proof-links a { display:inline-flex; align-items:center; min-height:44px; } summary { min-height:44px; padding:12px 0; } .story-top { gap:12px; } .story-top .stack { min-width:0; margin-right:0; } }
+    @media(max-width:760px) { .intro { min-width:0; } h1 { overflow-wrap:anywhere; } nav a,.proof-links a { display:inline-flex; align-items:center; min-height:44px; } summary { min-height:44px; padding:12px 0; } .story,.story:nth-child(n+4) { grid-column:auto; padding-top:0; border-top:0; } .story-top { gap:12px; } .story-top .stack { min-width:0; margin-right:0; } }
     @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
   </style>
 </head>
@@ -172,14 +172,14 @@
         </article>
         <article class="story">
           <div class="story-top"><span class="number" aria-hidden="true">04</span><p class="stack">LANGUAGE &amp; LITERATURE<br>독어독문학</p><svg class="story-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M4 6q6-2 12 2 6-4 12-2v20q-6-2-12 2-6-4-12-2ZM16 8v20M8 12l4 1m8 0 4-1"/></svg></div>
-          <h3>외국어를 공부하고,<br>독어독문학을 전공했습니다</h3><p class="outcome">외국어고등학교 졸업 · 독어독문학 전공</p>
-          <dl><div><dt>상황</dt><dd>외국어와 언어에 관심을 두고 공부했습니다.</dd></div><div><dt>행동</dt><dd>외국어고등학교에서 공부했고, 대학에서는 독어독문학을 전공했습니다.</dd></div><div><dt>결과</dt><dd>외국어고등학교 졸업과 독어독문학 전공이라는 언어 배경을 갖고 있습니다.</dd></div></dl>
+          <h3>언어와 문학도<br>제 배경의 한 부분입니다</h3><p class="outcome">외국어에 대한 관심</p>
+          <dl><div><dt>학력</dt><dd>외국어고등학교를 졸업했습니다.</dd></div><div><dt>전공</dt><dd>대학에서는 독어독문학을 전공했습니다.</dd></div></dl>
           <div class="story-proof is-self-reported"><span class="label">본인 제공 정보 / Self-reported</span><p>학력·전공은 본인이 제공한 정보입니다. 공개 증빙 자료는 없습니다.</p></div>
         </article>
         <article class="story">
           <div class="story-top"><span class="number" aria-hidden="true">05</span><p class="stack">LEAGUE OF LEGENDS<br>Grandmaster</p><svg class="story-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M10 5h12v8q0 8-6 8t-6-8ZM10 8H5v5q0 5 7 5M22 8h5v5q0 5-7 5M16 21v6m-6 0h12"/></svg></div>
-          <h3>게임에서는<br>그랜드마스터를 달성했습니다</h3><p class="outcome">리그 오브 레전드 그랜드마스터 달성</p>
-          <dl><div><dt>상황</dt><dd>리그 오브 레전드를 플레이했습니다.</dd></div><div><dt>행동</dt><dd>게임에 참여해 티어를 올렸습니다.</dd></div><div><dt>결과</dt><dd>그랜드마스터 티어를 달성한 경험이 있습니다.</dd></div></dl>
+          <h3>게임에서도<br>달성한 이력이 있습니다</h3><p class="outcome">리그 오브 레전드</p>
+          <dl><div><dt>달성 이력</dt><dd>그랜드마스터 티어를 달성한 경험이 있습니다.</dd></div></dl>
           <div class="story-proof is-self-reported"><span class="label">본인 제공 정보 / Self-reported</span><p>본인이 밝힌 달성 이력입니다. 공개 기록 링크는 없습니다.</p></div>
         </article>
       </div>
