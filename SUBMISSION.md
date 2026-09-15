@@ -29,7 +29,7 @@
 
 | # | 강점/취향 | 결과(수치) | 근거 링크 |
 |---|---|---|---|
-| 1 | 몰입하면 끝까지 팝니다 | 서버 1위 규모 · 그랜드마스터 591 LP · 상위 0.55% | [PocketMine-MP](https://github.com/alska14/PocketMine-MP), [EventOnline](https://github.com/alska14/EventOnline), [OP.GG](https://op.gg/summoners/kr/%EC%9D%B4%20%EB%A7%90%EC%B0%A8%EA%B0%80%20%EC%8B%9D%EA%B8%B0%EC%A0%84%EC%97%90-MACHA), [FOW.LOL](https://www.fow.lol/find/kr/%EC%9D%B4%20%EB%A7%90%EC%B0%A8%EA%B0%80%20%EC%8B%9D%EA%B8%B0%EC%A0%84%EC%97%90-macha) |
+| 1 | 몰입하면 끝까지 팝니다 | 서버 1위 규모 · 그랜드마스터 591 LP · 상위 0.55% | [PocketMine-MP](https://github.com/alska14/PocketMine-MP), [서버 운영 파일(Google Drive)](https://drive.google.com/drive/folders/0B7wazqMjK4vWTXR2SkgyX0VwMlU?resourcekey=0-tjOCnJBmBNJgNls9Ji8BtQ&usp=sharing), [OP.GG](https://op.gg/summoners/kr/%EC%9D%B4%20%EB%A7%90%EC%B0%A8%EA%B0%80%20%EC%8B%9D%EA%B8%B0%EC%A0%84%EC%97%90-MACHA), [FOW.LOL](https://www.fow.lol/find/kr/%EC%9D%B4%20%EB%A7%90%EC%B0%A8%EA%B0%80%20%EC%8B%9D%EA%B8%B0%EC%A0%84%EC%97%90-macha) |
 | 2 | AI와 개발하고, 데이터로 판단합니다 | 버전 문서 12개 · v0.1–v0.12 | [CONVERSATION.md](https://github.com/alska14/kimjaehyun-portfolio/blob/main/CONVERSATION.md) |
 | 3 | 꾸준함은 제 방식입니다 | 세미나 18회 이상 개근 · 1.5년 | [CPSR 라벨 생성 도구](https://github.com/alska14/cpnplabel) (일부 공개, 나머지는 회사명 비공개) |
 | 4 | 말과 글에 대한 관심을 좇았습니다 | 독어독문학과 2학년 수료 · 휴학 중 | 본인 제공 정보, 증빙 없음(자기보고) |
