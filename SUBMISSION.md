@@ -25,6 +25,34 @@
 
 체크: 두 목록 모두 3개 이상 → T01-C04, T01-C05 통과. 실제 페이지에서 새 시크릿 창으로 열어 위 두 표와 화면 내용이 일치하는지 대조하면 점검 완료.
 
+## 강점·취향 3개(상황·행동·결과)와 근거 (T01-C06~C09)
+
+| # | 강점/취향 | 결과(수치) | 근거 링크 |
+|---|---|---|---|
+| 1 | 몰입하면 끝까지 팝니다 | 서버 1위 규모 · 그랜드마스터 591 LP · 상위 0.55% | [PocketMine-MP](https://github.com/alska14/PocketMine-MP), [EventOnline](https://github.com/alska14/EventOnline), [OP.GG](https://op.gg/summoners/kr/%EC%9D%B4%20%EB%A7%90%EC%B0%A8%EA%B0%80%20%EC%8B%9D%EA%B8%B0%EC%A0%84%EC%97%90-MACHA), [FOW.LOL](https://www.fow.lol/find/kr/%EC%9D%B4%20%EB%A7%90%EC%B0%A8%EA%B0%80%20%EC%8B%9D%EA%B8%B0%EC%A0%84%EC%97%90-macha) |
+| 2 | AI와 개발하고, 데이터로 판단합니다 | 버전 문서 12개 · v0.1–v0.12 | [CONVERSATION.md](https://github.com/alska14/kimjaehyun-portfolio/blob/main/CONVERSATION.md) |
+| 3 | 꾸준함은 제 방식입니다 | 세미나 18회 이상 개근 · 1.5년 | [CPSR 라벨 생성 도구](https://github.com/alska14/cpnplabel) (일부 공개, 나머지는 회사명 비공개) |
+| 4 | 말과 글에 대한 관심을 좇았습니다 | 독어독문학과 2학년 수료 · 휴학 중 | 본인 제공 정보, 증빙 없음(자기보고) |
+
+4개 모두 상황·행동·결과 3필드를 page 본문(`<dl>`)에 갖추고 있음 → T01-C06~C08 통과(요건은 3개 이상, 4개로 초과 충족). 근거는 최소 1개 이상 연결 → T01-C09 통과(활동 01~03이 실제 공개 링크로 연결됨).
+
+## 두 해상도 첫인상 검사 결과 (T01-C10~C12, 최종 배포본 재실측)
+
+| 해상도 | 가로 넘침 | `#intro` top | `#evidence` top | `#activity` top |
+|---|---|---|---|---|
+| 1366×768 | 0px | 96px | 153.5px | 402.6px |
+| 1920×1080 | 0px | 96px | 176.6px | 443.2px |
+
+세 요소(`#intro`, `#evidence`, `#activity`) 모두 top 값이 뷰포트 높이(768px, 1080px)보다 작음 → 첫 화면 안에 소개·근거·활동이 전부 보임(T01-C10, T01-C11 통과). 가로 넘침 0px → T01-C12 통과.
+
+## 상호작용·움직임 선택·비밀값 점검 (T01-C19~C24)
+
+라이브 URL에서 직접 실행해 확인한 결과:
+
+- **상호작용(`<details>`/`<summary>`, 공개 근거 영역)**: 마우스 클릭과 키보드(Tab 이동 후 Enter)로 열고 닫힘 확인. `summary` 요소가 포커스 가능함을 확인(`tabIndex >= -1`).
+- **움직임 선택권(`.motion-toggle` 버튼)**: 클릭 시 `<html>`에 `motion-off` 클래스가 토글되며 identity-scene 다이어그램의 흐름 애니메이션이 켜짐/꺼짐 전환됨을 확인.
+- **비밀값 없음**: 페이지 전체 텍스트(`document.body.innerText`)에 `password`/`api key`/`secret`/`token` 패턴 매칭 — 0건.
+
 ## 확인 방법
 
 1. ① 어디로 가나요: https://alska14.github.io/kimjaehyun-portfolio/ 첫 화면으로 이동한다.
@@ -42,11 +70,13 @@
    - 수정 후 상태: intro에 대상·목적 문장을 추가했다. (Turn 3 → Turn 4)
 3. 결함 3 — 디자인 리프레시 후 근거 카드가 첫 화면 밖
    - 수정 전 상태: `#evidence` top이 1366×768에서 1009, 1920×1080에서 1055였다.
-   - 수정 후 상태: 그리드 재배치 후 `#evidence` top이 1366×768에서 491, 1920×1080에서 527이 되었다. (Turn 9 → Turn 10 수정, Turn 11 실측. 당시 버전의 측정값이며 현재 버전의 재측정값은 아님.)
+   - 수정 후 상태: 그리드 재배치 후 `#evidence` top이 1366×768에서 491, 1920×1080에서 527이 되었다. (Turn 9 → Turn 10 수정, Turn 11 실측. 당시 버전의 측정값이며 현재 버전의 재측정값은 아님 — 현재 버전 재측정값은 위 "두 해상도 첫인상 검사 결과" 표 참고.)
+
+콘솔 결과: 최종 배포된 라이브 URL(https://alska14.github.io/kimjaehyun-portfolio/)에서 브라우저 콘솔 오류 메시지를 확인 — 0건 (T01-C18 통과).
 
 ## T01-C17 추가 — 배포 구조 변경 이력 (2026-09-15)
 
-과제 원문에는 "index.html 하나"라는 형식 요건이 없고 "무로그인 공개 URL"만 요구함을 재확인해, 한때 React+Vite+Tailwind+framer-motion 구조(`web/`)로 전환하고 GitHub Actions로 빌드·배포한 적이 있다. 이후 저장소 주인이 디자인을 비교해보고 원래의 단일 정적 HTML 버전을 선호해, `index.html` 단일 파일 + GitHub Pages 브랜치 배포(빌드 없음)로 되돌렸다. 이 과정에서 GitHub Pages가 저장소를 Jekyll로 처리하려다 빌드에 실패한 적이 있어 `.nojekyll` 파일을 추가해 해결했다. 최종 배포본 기준으로 T01-C10/C11(1366×768·1920×1080 첫 화면에 소개·활동·근거 노출), T01-C12(가로 넘침 0), T01-C13~C18(링크·키보드 포커스 순서·제목 단계·명암비·콘솔 오류), T01-C19~C22(키보드로 열고 닫을 수 있는 `<details>` 상호작용) 전부 실측 재검증해 통과했다(2026-09-16 재확인).
+과제 원문에는 "index.html 하나"라는 형식 요건이 없고 "무로그인 공개 URL"만 요구함을 재확인해, 한때 React+Vite+Tailwind+framer-motion 구조(`web/`)로 전환하고 GitHub Actions로 빌드·배포한 적이 있다. 이후 저장소 주인이 디자인을 비교해보고 원래의 단일 정적 HTML 버전을 선호해, `index.html` 단일 파일 + GitHub Pages 브랜치 배포(빌드 없음)로 되돌렸다. 이 과정에서 GitHub Pages가 저장소를 Jekyll로 처리하려다 빌드에 실패한 적이 있어 `.nojekyll` 파일을 추가해 해결했다. 최종 배포본 기준으로 T01-C10/C11(1366×768·1920×1080 첫 화면에 소개·활동·근거 노출), T01-C12(가로 넘침 0), T01-C13~C18(링크·키보드 포커스 순서·제목 단계·명암비·콘솔 오류), T01-C19~C22(키보드로 열고 닫을 수 있는 `<details>` 상호작용) 전부 실측 재검증해 통과했다.
 
 ## 근거 (T01-C09)
 
