@@ -1,11 +1,11 @@
 # 제출문
 
-- 결과물 주소: 배포 전 — 확인 후 공개 URL을 입력한다.
-- 소스 주소: https://github.com/alska14/ai-pair-log
+- 결과물 주소: https://alska14.github.io/ai-pair-log/
+- 소스 주소: https://github.com/alska14/ai-pair-log (React+Vite 소스는 `web/` 폴더, 이전 단일 HTML 버전은 `legacy-static/index.html`에 보존)
 
 ## 확인 방법
 
-1. ① 어디로 가나요: 공개된 `index.html`의 첫 화면으로 이동한다.
+1. ① 어디로 가나요: https://alska14.github.io/ai-pair-log/ 첫 화면으로 이동한다.
 2. ② 3단계 이내 무엇을 하나요: 소개·활동·근거 카드가 보이는지 확인하고, `공개 근거` 영역의 “이 근거가 증명하는 범위”를 클릭하거나 Tab으로 초점을 둔 뒤 Enter를 누른다.
 3. ③ 무엇이 보이면 통과인가요: 보조 설명이 열리고, 다시 클릭하거나 Enter를 누르면 닫힌다.
 4. ④ 안 될 때 무엇이 보이나요: 내용이 열리지 않거나, 키보드만으로 열고 닫을 수 없다.
@@ -21,6 +21,10 @@
 3. 결함 3 — 디자인 리프레시 후 근거 카드가 첫 화면 밖
    - 수정 전 상태: `#evidence` top이 1366×768에서 1009, 1920×1080에서 1055였다.
    - 수정 후 상태: 그리드 재배치 후 `#evidence` top이 1366×768에서 491, 1920×1080에서 527이 되었다. (Turn 9 → Turn 10 수정, Turn 11 실측. 당시 버전의 측정값이며 현재 버전의 재측정값은 아님.)
+
+## T01-C17 추가 — 아키텍처 전환 (2026-09-15)
+
+과제 원문에는 "index.html 하나"라는 형식 요건이 없고 "무로그인 공개 URL"만 요구함을 재확인해, 단일 정적 HTML(`legacy-static/index.html`, 그대로 보존)에서 React+Vite+Tailwind+framer-motion 구조(`web/`)로 전환하고 GitHub Actions로 GitHub Pages에 자동 배포했다. 전환 후에도 T01-C10/C11(1366×768·1920×1080 첫 화면에 소개·활동·근거 노출), T01-C12(가로 넘침 0), T01-C19~C22(키보드로 열고 닫을 수 있는 `<details>` 상호작용) 전부 재검증해 통과했다.
 
 ## 근거 (T01-C09)
 
