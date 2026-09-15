@@ -1,3 +1,11 @@
+export const aboutHeading = [
+  { text: "저는 김재현,", className: "font-sans font-normal" },
+  { text: "직접 만들고 검증하는 개발자입니다.", className: "font-serif italic" },
+];
+
+export const aboutBody =
+  "군 복무를 마친 뒤 화장품 인허가 회사에서 개발과 신규사업을 맡았고, 유럽·캐나다 규제 변화를 매달 세미나로 정리하며 규제 자동화 도구 생태계를 설계했습니다. 모바일 마인크래프트 서버를 운영하며 생긴 몰입은 리그 오브 레전드 솔로랭크와 독어독문학 공부로도 이어졌고, 지금은 AI와 함께 결과를 대조하며 검증하는 개발 방식을 실무에 적용하고 있습니다.";
+
 export const activities = [
   {
     num: "01",

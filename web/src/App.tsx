@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Check, ChevronRight, ArrowUpRight } from "lucide-react";
-import { activities, facts, boundaries } from "./content";
+import { Check, ChevronRight, ArrowUpRight, ArrowRight } from "lucide-react";
+import { activities, facts, boundaries, aboutHeading, aboutBody } from "./content";
+import { WordsPullUp } from "./components/WordsPullUp";
+import { ScrollRevealText } from "./components/ScrollRevealText";
 import heroIllustration from "./hero_illustration.webp";
 
 const NAME_LETTERS = "김재현".split("");
@@ -141,15 +143,27 @@ export default function App() {
         <div className="relative mx-auto max-w-6xl px-5 pb-8 pt-4 sm:px-8">
           <p className="text-xs font-semibold tracking-[0.14em] text-cream/50">개발 · 언어 · 게임에 걸친 경험</p>
           <KineticName />
-          <motion.p
-            className="mt-3 max-w-xl text-sm text-cream/70 sm:text-base"
+          <WordsPullUp
+            as="p"
+            delayStart={0.9}
+            className="mt-3 max-w-xl text-sm leading-relaxed text-cream/70 sm:text-base"
+            text="서버를 직접 개발해 한국 모바일 마인크래프트 서버 1위 규모로 운영했고, 지금은 AI와 업무 자동화 시스템을 만들고 있습니다."
+          />
+          <motion.a
+            href="#evidence"
+            className="group mt-6 inline-flex w-fit items-center gap-3 rounded-full bg-cream py-1.5 pl-5 pr-1.5 font-semibold text-ink transition-[gap] hover:gap-4"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.9 }}
+            transition={{ duration: 0.6, delay: 1.5, ease: [0.16, 1, 0.3, 1] }}
           >
-            서버를 직접 개발해 한국 모바일 마인크래프트 서버 1위 규모로 운영했고, 지금은 AI와 업무 자동화 시스템을
-            만들고 있습니다. 이 페이지는 동료와 협업 상대에게 개발·언어·게임에 걸친 김재현의 경험을 소개합니다.
-          </motion.p>
+            <span className="text-sm">직접 검증한 근거 보기</span>
+            <span
+              className="grid h-8 w-8 place-items-center rounded-full transition-transform group-hover:scale-110"
+              style={{ background: "var(--color-ink)" }}
+            >
+              <ArrowRight size={16} className="text-cream" />
+            </span>
+          </motion.a>
         </div>
       </header>
 
@@ -213,6 +227,23 @@ export default function App() {
               <ActivityCard key={a.num} item={a} index={i} />
             ))}
           </div>
+        </section>
+
+        {/* ABOUT — 스크롤 연동 글자 리빌 */}
+        <section aria-labelledby="about-title" className="border-t border-cream/10 py-14 text-center">
+          <p className="text-[11px] font-semibold tracking-[0.14em] text-cream/50">ABOUT</p>
+          <h2
+            id="about-title"
+            className="mx-auto mt-3 flex max-w-3xl flex-wrap justify-center gap-x-3 gap-y-1 text-2xl leading-tight sm:text-3xl md:text-4xl"
+          >
+            {aboutHeading.map((seg, i) => (
+              <WordsPullUp key={i} text={seg.text} className={seg.className} delayStart={i * 0.3} />
+            ))}
+          </h2>
+          <ScrollRevealText
+            text={aboutBody}
+            className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-cream/70 sm:text-base"
+          />
         </section>
 
         {/* PROFILE */}
