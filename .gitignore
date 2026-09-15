@@ -1,3 +1,5 @@
 .codex-*.log
 .codex-*.done
 .visual-check/
+web/node_modules/
+web/dist/
